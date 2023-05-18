@@ -15,7 +15,7 @@ class Logout: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue?
     
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl =  "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"
     /// init
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
@@ -30,7 +30,8 @@ class Logout: AbstractRequestFactory {
 extension Logout: LogoutRequestFactory {
     /// logout
     func logout(idUser: Int, completionHandler: @escaping (Alamofire.AFDataResponse<LogoutResult>) -> Void) {
-        let requestModel = Logout(baseUrl: baseUrl, idUser: idUser)
+        guard let url = URL(string: baseUrl) else {return}
+        let requestModel = Logout(baseUrl: url, idUser: idUser)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -46,9 +47,7 @@ extension Logout {
             return [
                 "id_user": idUser
             ]
-            
         }
-        
     }
-    
 }
+

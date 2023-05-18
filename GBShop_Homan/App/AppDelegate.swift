@@ -13,57 +13,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let requestFactory = RequestFactory()
     
+
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions:
-                     [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        authRequest()
-        return true
-    }
-    
-    private func logoutRequest() {
-        let logout = requestFactory.makeLogoutRequestFatory()
-        logout.logout(idUser: 1) {
-            response in
-            switch response.result {
-            case .success(let login):
-                print(login)
-            case .failure(let error):
-                print(error.localizedDescription)
+                         didFinishLaunchingWithOptions launchOptions:
+                         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            authRequest()
+            logoutRequest()
+            changesUserDataRequest()
+            return true
+        }
+
+        private func authRequest() {
+            let auth = requestFactory.makeAuthRequestFatory()
+            auth.login(userName: "Somebody", password: "mypassword") {
+                response in
+                switch response.result {
+                case .success(let login):
+                    print(login)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
-    }
-    private func authRequest() {
-        let auth = requestFactory.makeAuthRequestFatory()
-        auth.login(userName: "Aliaks", password: "passwordHoman") {
-            response in
-            switch response.result {
-            case .success(let login):
-                print(login)
-            case .failure(let error):
-                print(error.localizedDescription)
+        
+        private func changesUserDataRequest() {
+            let profile = requestFactory.makeChangesProfileRequestFatory()
+            profile.changesProfile(idUser: 123,
+                                   userName: "Aliaks",
+                                   password: "geekbrains",
+                                   email: "Aliaksandra.makey@gmail.com",
+                                   gender: "f",
+                                   creditCard: "1234-1234-1234-1234",
+                                   bio: "Some text") { response in
+                switch response.result {
+                case .success(let profile):
+                    print(profile)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
-    }
-    
-    private func changesUserDataRequest() {
-        let profile = requestFactory.makeChangesProfileRequestFatory()
-        profile.changesProfile(idUser: 1,
-                               userName: "AliaksHoman",
-                               password: "aliaks",
-                               email: "Aliaksandra.makey@gmail.com",
-                               gender: "f",
-                               creditCard: "1234-4567-1234-4567",
-                               bio: "Some text") { response in
-            
-            switch response.result {
-            case .success(let profile):
-                print(profile)
-            case .failure(let error):
-                print(error.localizedDescription)
+        private func logoutRequest() {
+            let logout = requestFactory.makeLogoutRequestFatory()
+            logout.logout(idUser: 123) {
+                response in
+                switch response.result {
+                case .success(let login):
+                    print(login)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
-    }
-    
     //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     //        // Override point for customization after application launch.
     //        return true

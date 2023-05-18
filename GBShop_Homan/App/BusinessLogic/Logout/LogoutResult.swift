@@ -10,7 +10,5 @@ import Foundation
 //MARK: - LogoutResult
 struct LogoutResult: Codable {
     /// properties
-    let idUser: Int
     let result: Int
-    let user: User
 }

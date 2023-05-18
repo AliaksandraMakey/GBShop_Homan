@@ -8,6 +8,9 @@
 import Foundation
 import Alamofire
 
+import Foundation
+import Alamofire
+
 //MARK: - Auth
 class Auth: AbstractRequestFactory {
     /// properties
@@ -15,7 +18,7 @@ class Auth: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue?
     
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl =  "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"
     /// init
     init(
         errorParser: AbstractErrorParser,
@@ -33,7 +36,8 @@ extension Auth: AuthRequestFactory {
     func login(userName: String,
                password: String,
                completionHandler: @escaping (AFDataResponse<AuthResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+        guard let url = URL(string: baseUrl) else {return}
+        let requestModel = Login(baseUrl: url, login: userName, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -48,7 +52,8 @@ extension Auth {
         let password: String
         var parameters: Parameters? {
             return [
-                "username": login, "password": password
+                "username": login,
+                "password": password
             ]}
     }
 }

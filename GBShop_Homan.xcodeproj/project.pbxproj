@@ -14,6 +14,7 @@
 		003485FA2A15EE63005C9709 /* ChangesProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003485F92A15EE63005C9709 /* ChangesProfile.swift */; };
 		003485FC2A15F123005C9709 /* ChangesProfileRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003485FB2A15F123005C9709 /* ChangesProfileRequestFactory.swift */; };
 		003485FE2A15F134005C9709 /* ChangesProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003485FD2A15F134005C9709 /* ChangesProfileResult.swift */; };
+		005F869F2A167505004B1DDD /* ResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F869E2A167505004B1DDD /* ResponseCodable.swift */; };
 		00ADC3B52A14FA9700B0ADE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3B42A14FA9700B0ADE3 /* AppDelegate.swift */; };
 		00ADC3B72A14FA9700B0ADE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3B62A14FA9700B0ADE3 /* SceneDelegate.swift */; };
 		00ADC3B92A14FA9700B0ADE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82A14FA9700B0ADE3 /* ViewController.swift */; };
@@ -53,6 +54,13 @@
 			remoteGlobalIDString = 00ADC3B02A14FA9700B0ADE3;
 			remoteInfo = GBShop_Homan;
 		};
+		00D503DE2A1672F900200B1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00ADC3A92A14FA9700B0ADE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00ADC3B02A14FA9700B0ADE3;
+			remoteInfo = GBShop_Homan;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +71,7 @@
 		003485F92A15EE63005C9709 /* ChangesProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangesProfile.swift; sourceTree = "<group>"; };
 		003485FB2A15F123005C9709 /* ChangesProfileRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangesProfileRequestFactory.swift; sourceTree = "<group>"; };
 		003485FD2A15F134005C9709 /* ChangesProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangesProfileResult.swift; sourceTree = "<group>"; };
+		005F869E2A167505004B1DDD /* ResponseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodable.swift; sourceTree = "<group>"; };
 		00ADC3B12A14FA9700B0ADE3 /* GBShop_Homan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop_Homan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00ADC3B42A14FA9700B0ADE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00ADC3B62A14FA9700B0ADE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +95,8 @@
 		00ADC4052A15263100B0ADE3 /* AuthRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestFactory.swift; sourceTree = "<group>"; };
 		00ADC4072A15264200B0ADE3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		00ADC4092A15265100B0ADE3 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		00D503DA2A1672F900200B1D /* ResponseodableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResponseodableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00FFB9FC2A16712A00FE2128 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1384372722138076EF1FF883 /* Pods-GBShop_Homan-GBShop_HomanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop_Homan-GBShop_HomanUITests.debug.xcconfig"; path = "Target Support Files/Pods-GBShop_Homan-GBShop_HomanUITests/Pods-GBShop_Homan-GBShop_HomanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		19EE5D461C9158E83E8EC2CE /* Pods_GBShop_Homan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop_Homan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28508A2583886C3C515CCD0B /* Pods-GBShop_Homan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop_Homan.debug.xcconfig"; path = "Target Support Files/Pods-GBShop_Homan/Pods-GBShop_Homan.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +133,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		00D503D72A1672F900200B1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -155,6 +173,14 @@
 			path = Changes;
 			sourceTree = "<group>";
 		};
+		005F869D2A1674A1004B1DDD /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				005F869E2A167505004B1DDD /* ResponseCodable.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		00ADC3A82A14FA9700B0ADE3 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +199,7 @@
 				00ADC3B12A14FA9700B0ADE3 /* GBShop_Homan.app */,
 				00ADC3C72A14FA9900B0ADE3 /* GBShop_HomanTests.xctest */,
 				00ADC3D12A14FA9900B0ADE3 /* GBShop_HomanUITests.xctest */,
+				00D503DA2A1672F900200B1D /* ResponseodableTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +297,7 @@
 		00ADC3EB2A1522AD00B0ADE3 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				005F869D2A1674A1004B1DDD /* Response */,
 				00ADC4092A15265100B0ADE3 /* RequestFactory.swift */,
 				003485F82A15EE24005C9709 /* Changes */,
 				003485EF2A15DB58005C9709 /* Auth */,
@@ -294,6 +322,7 @@
 		C455864891F9CF5DCEEEA618 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00FFB9FC2A16712A00FE2128 /* XCTest.framework */,
 				19EE5D461C9158E83E8EC2CE /* Pods_GBShop_Homan.framework */,
 				D76F6FEB911E809E98B6A9A2 /* Pods_GBShop_Homan_GBShop_HomanUITests.framework */,
 				E2CE8E1C9907F079B700AF59 /* Pods_GBShop_HomanTests.framework */,
@@ -375,6 +404,24 @@
 			productReference = 00ADC3D12A14FA9900B0ADE3 /* GBShop_HomanUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		00D503D92A1672F900200B1D /* ResponseodableTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D503E02A1672F900200B1D /* Build configuration list for PBXNativeTarget "ResponseodableTests" */;
+			buildPhases = (
+				00D503D62A1672F900200B1D /* Sources */,
+				00D503D72A1672F900200B1D /* Frameworks */,
+				00D503D82A1672F900200B1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00D503DF2A1672F900200B1D /* PBXTargetDependency */,
+			);
+			name = ResponseodableTests;
+			productName = ResponseodableTests;
+			productReference = 00D503DA2A1672F900200B1D /* ResponseodableTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -396,6 +443,10 @@
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 00ADC3B02A14FA9700B0ADE3;
 					};
+					00D503D92A1672F900200B1D = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 00ADC3B02A14FA9700B0ADE3;
+					};
 				};
 			};
 			buildConfigurationList = 00ADC3AC2A14FA9700B0ADE3 /* Build configuration list for PBXProject "GBShop_Homan" */;
@@ -414,6 +465,7 @@
 				00ADC3B02A14FA9700B0ADE3 /* GBShop_Homan */,
 				00ADC3C62A14FA9900B0ADE3 /* GBShop_HomanTests */,
 				00ADC3D02A14FA9900B0ADE3 /* GBShop_HomanUITests */,
+				00D503D92A1672F900200B1D /* ResponseodableTests */,
 			);
 		};
 /* End PBXProject section */
@@ -437,6 +489,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		00ADC3CF2A14FA9900B0ADE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D503D82A1672F900200B1D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -563,6 +622,7 @@
 				00ADC3B92A14FA9700B0ADE3 /* ViewController.swift in Sources */,
 				00ADC3B52A14FA9700B0ADE3 /* AppDelegate.swift in Sources */,
 				003485EE2A15D983005C9709 /* DataRequest.swift in Sources */,
+				005F869F2A167505004B1DDD /* ResponseCodable.swift in Sources */,
 				003485FA2A15EE63005C9709 /* ChangesProfile.swift in Sources */,
 				003485F62A15DC7E005C9709 /* LogoutResult.swift in Sources */,
 				00ADC3B72A14FA9700B0ADE3 /* SceneDelegate.swift in Sources */,
@@ -593,6 +653,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		00D503D62A1672F900200B1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -605,6 +672,11 @@
 			isa = PBXTargetDependency;
 			target = 00ADC3B02A14FA9700B0ADE3 /* GBShop_Homan */;
 			targetProxy = 00ADC3D22A14FA9900B0ADE3 /* PBXContainerItemProxy */;
+		};
+		00D503DF2A1672F900200B1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00ADC3B02A14FA9700B0ADE3 /* GBShop_Homan */;
+			targetProxy = 00D503DE2A1672F900200B1D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -880,6 +952,50 @@
 			};
 			name = Release;
 		};
+		00D503E12A1672F900200B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LFLMJ46Z7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.ResponseodableTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GBShop_Homan.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GBShop_Homan";
+			};
+			name = Debug;
+		};
+		00D503E22A1672F900200B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LFLMJ46Z7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.ResponseodableTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GBShop_Homan.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GBShop_Homan";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -915,6 +1031,15 @@
 			buildConfigurations = (
 				00ADC3E22A14FA9900B0ADE3 /* Debug */,
 				00ADC3E32A14FA9900B0ADE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00D503E02A1672F900200B1D /* Build configuration list for PBXNativeTarget "ResponseodableTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D503E12A1672F900200B1D /* Debug */,
+				00D503E22A1672F900200B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

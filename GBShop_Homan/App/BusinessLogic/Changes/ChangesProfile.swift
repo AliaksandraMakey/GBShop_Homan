@@ -15,7 +15,7 @@ class ChangesProfile: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue?
     
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"
     /// init
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
@@ -37,7 +37,8 @@ extension ChangesProfile: ChangesProfileRequestFactory {
                        creditCard: String,
                        bio: String,
                        completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void) {
-        let requestModel = ChangesProfile(baseUrl: baseUrl, idUser: idUser, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+        guard let url = URL(string: baseUrl) else {return}
+        let requestModel = ChangesProfile(baseUrl: url, idUser: idUser, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     

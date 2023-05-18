@@ -11,5 +11,5 @@ import Foundation
 struct ChangesProfileResult: Codable {
     /// properties
     let result: Int
-    let user: User
+//    let user: User
 }

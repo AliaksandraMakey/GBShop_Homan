@@ -38,9 +38,9 @@ class RequestFactory {
     }
     /// metod makeChangesProfileRequestFatory
     func makeChangesProfileRequestFatory() -> ChangesProfileRequestFactory {
-        
         let errorParser = makeErrorParser()
-        
-        return ChangesProfile(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return ChangesProfile(errorParser: errorParser,
+                              sessionManager: commonSession,
+                              queue: sessionQueue)
     }
 }
