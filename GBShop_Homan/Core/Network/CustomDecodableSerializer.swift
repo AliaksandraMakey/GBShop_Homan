@@ -5,13 +5,18 @@
 //  Created by aaa on 12/05/2023.
 //
 
+import Foundation
 import Alamofire
 
+//MARK: - DecodableSerializer
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
+    /// properties
     private let errorParser: AbstractErrorParser
+    /// init
     init(errorParser: AbstractErrorParser) {
         self.errorParser = errorParser
     }
+    /// serialize
     func serialize(request: URLRequest?,
                    response: HTTPURLResponse?,
                    data: Data?,
@@ -31,14 +36,4 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
             throw customError
         }
     }
-}
-extension DataRequest {
-    @discardableResult
-    func responseCodable<T: Decodable>(
-        errorParser: AbstractErrorParser,
-        queue: DispatchQueue = .main,
-        completionHandler: @escaping (AFDataResponse<T>) -> Void) -> Self {
-            let responseSerializer = CustomDecodableSerializer<T>(errorParser: errorParser)
-            return response(queue: queue, responseSerializer: responseSerializer, completionHandler: completionHandler)
-        }
 }
