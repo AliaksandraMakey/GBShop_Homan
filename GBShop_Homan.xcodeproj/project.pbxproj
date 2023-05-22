@@ -34,6 +34,9 @@
 		00ADC4062A15263100B0ADE3 /* AuthRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC4052A15263100B0ADE3 /* AuthRequestFactory.swift */; };
 		00ADC4082A15264200B0ADE3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC4072A15264200B0ADE3 /* Auth.swift */; };
 		00ADC40A2A15265100B0ADE3 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC4092A15265100B0ADE3 /* RequestFactory.swift */; };
+		00FE8F402A167BD6002AB13D /* LogoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FE8F3F2A167BD6002AB13D /* LogoutTests.swift */; };
+		00FE8F422A167CE5002AB13D /* ChangeProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FE8F412A167CE5002AB13D /* ChangeProfileTests.swift */; };
+		00FE8F442A167E1C002AB13D /* AuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FE8F432A167E1C002AB13D /* AuthTest.swift */; };
 		0ECB778D9E77C266A48F4851 /* Pods_GBShop_Homan_GBShop_HomanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76F6FEB911E809E98B6A9A2 /* Pods_GBShop_Homan_GBShop_HomanUITests.framework */; };
 		4F2CDE390157225A6E374A5F /* Pods_GBShop_HomanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CE8E1C9907F079B700AF59 /* Pods_GBShop_HomanTests.framework */; };
 		9983F308D0DFB0002D637504 /* Pods_GBShop_Homan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE5D461C9158E83E8EC2CE /* Pods_GBShop_Homan.framework */; };
@@ -96,6 +99,9 @@
 		00ADC4072A15264200B0ADE3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		00ADC4092A15265100B0ADE3 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		00D503DA2A1672F900200B1D /* ResponseodableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResponseodableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00FE8F3F2A167BD6002AB13D /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
+		00FE8F412A167CE5002AB13D /* ChangeProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileTests.swift; sourceTree = "<group>"; };
+		00FE8F432A167E1C002AB13D /* AuthTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTest.swift; sourceTree = "<group>"; };
 		00FFB9FC2A16712A00FE2128 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1384372722138076EF1FF883 /* Pods-GBShop_Homan-GBShop_HomanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop_Homan-GBShop_HomanUITests.debug.xcconfig"; path = "Target Support Files/Pods-GBShop_Homan-GBShop_HomanUITests/Pods-GBShop_Homan-GBShop_HomanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		19EE5D461C9158E83E8EC2CE /* Pods_GBShop_Homan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop_Homan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +155,7 @@
 				00ADC4052A15263100B0ADE3 /* AuthRequestFactory.swift */,
 				00ADC4012A15260B00B0ADE3 /* LoginResult.swift */,
 				00ADC4072A15264200B0ADE3 /* Auth.swift */,
+				00FE8F432A167E1C002AB13D /* AuthTest.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -159,6 +166,7 @@
 				003485F32A15DBCF005C9709 /* LogoutRequestFactory.swift */,
 				003485F52A15DC7E005C9709 /* LogoutResult.swift */,
 				003485F12A15DB76005C9709 /* Logout.swift */,
+				00FE8F3F2A167BD6002AB13D /* LogoutTests.swift */,
 			);
 			path = Logout;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 				003485FB2A15F123005C9709 /* ChangesProfileRequestFactory.swift */,
 				003485FD2A15F134005C9709 /* ChangesProfileResult.swift */,
 				003485F92A15EE63005C9709 /* ChangesProfile.swift */,
+				00FE8F412A167CE5002AB13D /* ChangeProfileTests.swift */,
 			);
 			path = Changes;
 			sourceTree = "<group>";
@@ -641,6 +650,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				00ADC3CC2A14FA9900B0ADE3 /* GBShop_HomanTests.swift in Sources */,
+				00FE8F422A167CE5002AB13D /* ChangeProfileTests.swift in Sources */,
+				00FE8F402A167BD6002AB13D /* LogoutTests.swift in Sources */,
+				00FE8F442A167E1C002AB13D /* AuthTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

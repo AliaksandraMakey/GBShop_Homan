@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    password: "geekbrains",
                                    email: "Aliaksandra.makey@gmail.com",
                                    gender: "f",
-                                   creditCard: "1234-1234-1234-1234",
+                                   creditCard: "1234-5678-1234-5678",
                                    bio: "Some text") { response in
                 switch response.result {
                 case .success(let profile):
