@@ -7,9 +7,8 @@
 
 import Foundation
 
-//MARK: - protocol AbstractErrorParser
+//MARK: - Abstract Error Parser
 protocol AbstractErrorParser {
-    /// parse
     func parse(_ result: Error) -> Error
     func parse(response: HTTPURLResponse?,
                data: Data?,

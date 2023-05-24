@@ -7,13 +7,13 @@
 
 import Alamofire
 
-//MARK: - RequestRouterEncoding
+//MARK: - Request Router Encoding
 enum RequestRouterEncoding {
     case url, json
 }
-//MARK: - protocol RequestRouter
+//MARK: - protocol Request Router
 protocol RequestRouter: URLRequestConvertible {
-    /// properties
+    // properties
     var baseUrl: URL { get }
     var method: HTTPMethod { get }
     var path: String { get }
@@ -21,14 +21,15 @@ protocol RequestRouter: URLRequestConvertible {
     var fullUrl: URL { get }
     var encoding: RequestRouterEncoding { get }
 }
-//MARK: - extension RequestRouter
+//MARK: - extension Request Router
 extension RequestRouter {
-    /// properties
+    // properties
     var fullUrl: URL {
-    return baseUrl.appendingPathComponent(path) }
-    var encoding: RequestRouterEncoding { return .url
+    return baseUrl.appendingPathComponent(path)
     }
-    /// URLRequest
+    var encoding: RequestRouterEncoding {
+        return .url
+    }
     func asURLRequest() throws -> URLRequest {
         var urlRequest = URLRequest(url: fullUrl)
         urlRequest.httpMethod = method.rawValue

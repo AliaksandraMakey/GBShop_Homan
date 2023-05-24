@@ -9,13 +9,13 @@ import Foundation
 
 //MARK: - User
 struct User: Codable {
-    /// properties
+    // properties
     let id: Int
     let login: String
     let name: String
     let lastname: String
     /// CodingKeys
-    enum CodingKeys: String, CodingKey {
+    enum UserKeys: String, CodingKey {
         case id = "id_user"
         case login = "user_login"
         case name = "user_name"

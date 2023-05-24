@@ -8,15 +8,14 @@
 import Foundation
 import Alamofire
 
-//MARK: - ChangesProfile
+//MARK: - Changes Profile
 class ChangesProfile: AbstractRequestFactory {
-    /// properties
+    // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
-    
-    let baseUrl = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"
-    /// init
+    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
+
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
          queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
@@ -25,10 +24,8 @@ class ChangesProfile: AbstractRequestFactory {
         self.queue = queue
     }
 }
-//MARK: - extension ChangesProfile
 /// subscription ChangesProfileRequestFactory
 extension ChangesProfile: ChangesProfileRequestFactory {
-    /// changes
     func changesProfile(idUser: Int,
                        userName: String,
                        password: String,
@@ -36,17 +33,17 @@ extension ChangesProfile: ChangesProfileRequestFactory {
                        gender: String,
                        creditCard: String,
                        bio: String,
-                       completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void) {
-        guard let url = URL(string: baseUrl) else {return}
-        let requestModel = ChangesProfile(baseUrl: url, idUser: idUser, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
-        self.request(request: requestModel, completionHandler: completionHandler)
+                        completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void) {
+        if baseUrl != nil {
+            let requestModel = ChangesProfileRouter(baseUrl: baseUrl!, idUser: idUser, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+            self.request(request: requestModel, completionHandler: completionHandler)
+        }
     }
-    
 }
-//MARK: - ChangesProfile extension
 extension ChangesProfile {
-    //MARK: - ChangesProfile RequestRouter
-    struct ChangesProfile: RequestRouter {
+    //MARK: - Changes Profile Router
+    struct ChangesProfileRouter: RequestRouter {
+        // properties
         let baseUrl: URL
         let method: HTTPMethod = .get
         let path: String = "changeUserData.json"

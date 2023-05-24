@@ -8,9 +8,8 @@
 import Foundation
 import Alamofire
 
-//MARK: - AuthRequestFactory
+//MARK: -  Auth Request Factory
 protocol AuthRequestFactory {
-    /// login
     func login(userName: String,
                password: String,
                completionHandler: @escaping

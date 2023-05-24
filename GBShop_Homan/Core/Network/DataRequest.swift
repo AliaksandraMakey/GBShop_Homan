@@ -8,10 +8,10 @@
 import Foundation
 import Alamofire
 
-//MARK: - extension DataRequest
+//MARK: - extension Data Request
 extension DataRequest {
+    
     @discardableResult
-    /// responseCodable
     func responseCodable<T: Decodable>(
         errorParser: AbstractErrorParser,
         queue: DispatchQueue = .main,

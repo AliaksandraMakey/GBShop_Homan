@@ -7,9 +7,9 @@
 
 import Foundation
 
-//MARK: - ChangesProfileResult
+//MARK: - Changes Profile Result
 struct ChangesProfileResult: Codable {
-    /// properties
+    // properties
     let result: Int
 //    let user: User
 }

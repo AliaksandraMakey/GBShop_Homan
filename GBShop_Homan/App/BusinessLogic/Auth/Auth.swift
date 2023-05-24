@@ -8,20 +8,14 @@
 import Foundation
 import Alamofire
 
-import Foundation
-import Alamofire
-
 //MARK: - Auth
 class Auth: AbstractRequestFactory {
-    /// properties
+    // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
-    
-    let baseUrl =  "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"
-    /// init
-    init(
-        errorParser: AbstractErrorParser,
+    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
+    init(errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
             self.errorParser = errorParser
@@ -29,22 +23,20 @@ class Auth: AbstractRequestFactory {
             self.queue = queue
         }
 }
-//MARK: - extension Auth
 /// subscription AuthRequestFactory
 extension Auth: AuthRequestFactory {
-    /// login
     func login(userName: String,
                password: String,
                completionHandler: @escaping (AFDataResponse<AuthResult>) -> Void) {
-        guard let url = URL(string: baseUrl) else {return}
-        let requestModel = Login(baseUrl: url, login: userName, password: password)
-        self.request(request: requestModel, completionHandler: completionHandler)
+        if baseUrl != nil {
+            let requestModel = AuthRouter(baseUrl: baseUrl!, login: userName, password: password)
+            self.request(request: requestModel, completionHandler: completionHandler)
+        }
     }
 }
-//MARK: - Auth extension
 extension Auth {
-    //MARK: - Login RequestRouter
-    struct Login: RequestRouter {
+    //MARK: - Auth Router
+    struct AuthRouter: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
         let path: String = "login.json"

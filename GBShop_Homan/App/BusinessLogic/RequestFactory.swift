@@ -7,9 +7,9 @@
 import Foundation
 import Alamofire
 
-//MARK: - RequestFactory
+//MARK: - Request Factory
 class RequestFactory {
-    /// properties
+    // properties
     lazy var commonSession: Session = {
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
@@ -18,28 +18,34 @@ class RequestFactory {
         return manager
     }()
     let sessionQueue = DispatchQueue.global(qos: .utility)
-    /// makeErrorParser
-    func makeErrorParser() -> AbstractErrorParser {
+    var errorParser: AbstractErrorParser {
         return ErrorParser()
     }
-    /// metod makeAuthRequestFatory
-    func makeAuthRequestFatory() -> AuthRequestFactory {
-        let errorParser = makeErrorParser()
+    /// Make Auth Request Error Parser
+    func makeAuthRequest() -> AuthRequestFactory {
         return Auth(errorParser: errorParser,
                     sessionManager: commonSession,
                     queue: sessionQueue)
     }
-    /// metod makeLogoutRequestFatory
-    func makeLogoutRequestFatory() -> LogoutRequestFactory {
-        let errorParser = makeErrorParser()
+    /// Make Logout Request
+    func makeLogoutRequest() -> LogoutRequestFactory {
         return Logout(errorParser: errorParser,
                       sessionManager: commonSession,
                       queue: sessionQueue)
     }
-    /// metod makeChangesProfileRequestFatory
-    func makeChangesProfileRequestFatory() -> ChangesProfileRequestFactory {
-        let errorParser = makeErrorParser()
+    /// Make ChangesProfile Request
+    func makeChangesProfileRequest() -> ChangesProfileRequestFactory {
         return ChangesProfile(errorParser: errorParser,
+                              sessionManager: commonSession,
+                              queue: sessionQueue)
+    }
+    /// Make CatalogData Request
+    func makeCatalogDataRequest() -> CatalogDataRequestFactory {
+        return CatalogData(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+    /// Make Product Request
+    func makeProductRequest() -> ProductRequestFactory {
+        return ProductRequest(errorParser: errorParser,
                               sessionManager: commonSession,
                               queue: sessionQueue)
     }

@@ -13,25 +13,21 @@ import Alamofire
 final class AuthTest: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Test for function login")
-    var requestFactory: RequestFactory!
-    var userName: String!
-    var password: String!
+    var model: UserTestsModel!
     
     override func setUp() {
-        requestFactory = RequestFactory()
-        userName = "Somebody"
-        password = "mypassword"
+        model = UserTestsModel(requestFactory: RequestFactory(), userName: "Somebody", password: "mypassword")
     }
     
     override func tearDownWithError() throws {
-        requestFactory = nil
-        userName = nil
-        password = nil
+        model.requestFactory = nil
+        model.userName = nil
+        model.password = nil
     }
     
     func testAuth() {
-        let auth = requestFactory.makeAuthRequestFatory()
-        auth.login(userName: userName, password: password) { response in
+        let auth = model.requestFactory.makeAuthRequestFatory()
+        auth.login(userName: model.userName, password: model.password) { response in
             switch response.result {
             case .success(let login):
                 self.checkAuthResult(login)

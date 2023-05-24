@@ -11,22 +11,20 @@ import Alamofire
 
 class LogoutTests: XCTestCase {
     let expectation = XCTestExpectation(description: "Test for function logout")
-    var requestFactory: RequestFactory!
-    var idUser: Int!
-
+    var model: UserTestsModel!
+    
     override func setUp() {
-        requestFactory = RequestFactory()
-        idUser = 123
+        model = UserTestsModel(requestFactory: RequestFactory(), idUser: 123)
     }
     
     override func tearDownWithError() throws {
-        requestFactory = nil
-        idUser = nil
+        model.requestFactory = nil
+        model.idUser = nil
     }
 
     func testLogout() {
-        let logout = requestFactory.makeLogoutRequestFatory()
-        logout.logout(idUser: idUser) { response in
+        let logout = model.requestFactory.makeLogoutRequest()
+        logout.logout(idUser: model.idUser) { response in
             switch response.result {
             case .success(let logout):
                 self.checkLogoutResult(logout)

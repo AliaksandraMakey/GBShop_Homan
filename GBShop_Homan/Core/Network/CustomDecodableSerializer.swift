@@ -8,15 +8,13 @@
 import Foundation
 import Alamofire
 
-//MARK: - DecodableSerializer
+//MARK: - Decodable Serializer
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
-    /// properties
+    // properties
     private let errorParser: AbstractErrorParser
-    /// init
     init(errorParser: AbstractErrorParser) {
         self.errorParser = errorParser
     }
-    /// serialize
     func serialize(request: URLRequest?,
                    response: HTTPURLResponse?,
                    data: Data?,
