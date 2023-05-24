@@ -20,11 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             authRequest()
             logoutRequest()
             changesUserDataRequest()
+        
             return true
         }
 
         private func authRequest() {
-            let auth = requestFactory.makeAuthRequestFatory()
+            let auth = requestFactory.makeAuthRequest()
             auth.login(userName: "Somebody", password: "mypassword") {
                 response in
                 switch response.result {
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         private func changesUserDataRequest() {
-            let profile = requestFactory.makeChangesProfileRequestFatory()
+            let profile = requestFactory.makeChangesProfileRequest()
             profile.changesProfile(idUser: 123,
                                    userName: "Aliaks",
                                    password: "geekbrains",
@@ -54,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         private func logoutRequest() {
-            let logout = requestFactory.makeLogoutRequestFatory()
+            let logout = requestFactory.makeLogoutRequest()
             logout.logout(idUser: 123) {
                 response in
                 switch response.result {

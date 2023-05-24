@@ -8,9 +8,8 @@
 import Foundation
 import Alamofire
 
-//MARK: - ChangesProfileRequestFactory
+//MARK: - Changes Profile Request Factory
 protocol ChangesProfileRequestFactory {
-/// changes
     func changesProfile(idUser: Int,
                        userName: String,
                        password: String,

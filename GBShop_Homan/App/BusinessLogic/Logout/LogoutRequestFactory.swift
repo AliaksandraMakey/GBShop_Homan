@@ -10,7 +10,6 @@ import Alamofire
 
 //MARK: - LogoutRequestFactory
 protocol LogoutRequestFactory {
-    /// logout
     func logout(idUser: Int,
                  completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
 }

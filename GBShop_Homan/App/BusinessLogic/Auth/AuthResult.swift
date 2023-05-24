@@ -1,5 +1,5 @@
 //
-//  LoginResult.swift
+//  AuthResult.swift
 //  GBShop
 //
 //  Created by aaa on 12/05/2023.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-//MARK: - AuthResult
+//MARK: - Auth Result
 struct AuthResult: Codable {
-    /// properties
+    // properties
     let result: Int
     let user: User
 }
