@@ -14,8 +14,8 @@ struct User: Codable {
     let login: String
     let name: String
     let lastname: String
-    /// CodingKeys
-    enum UserKeys: String, CodingKey {
+    /// User Keys
+    enum CodingKeys: String, CodingKey {
         case id = "id_user"
         case login = "user_login"
         case name = "user_name"

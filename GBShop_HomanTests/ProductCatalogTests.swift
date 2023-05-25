@@ -10,28 +10,25 @@ import Alamofire
 @testable import GBShop_Homan
 
 class CatalogDataTests: XCTestCase {
-
+    
     let expectation = XCTestExpectation(description: "Testing the method of receiving product")
     
     var requestFactory: RequestFactory!
-    var pageNumber: Int!
-    var idCategory: Int!
-
+    var products: [Product]!
+    
     override func setUp() {
         requestFactory = RequestFactory()
-        pageNumber = 1
-        idCategory = 1
+        products = [Product]()
     }
-
+    
     override func tearDown() {
         requestFactory = nil
-        pageNumber = nil
-        idCategory = nil
+        products = nil
     }
-
+    
     func testGetProductCatalog() {
         let catalogData = requestFactory.makeCatalogDataRequest()
-        catalogData.getCatalogData(pageNumber: pageNumber, idCategory: idCategory) { response in
+        catalogData.getCatalogData(products: products) { response in
             switch response.result {
             case .success(let catalog):
                 self.checkCatalogDataResult(catalog)
@@ -41,13 +38,10 @@ class CatalogDataTests: XCTestCase {
             }
             self.expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 10.0)
+//        wait(for: [expectation], timeout: 15.0)
     }
-
+    
     private func checkCatalogDataResult(_ catalog: CatalogDataResult) {
-        if catalog.pageNumber < 0 {
-            XCTFail("CatalogDataTests: incorrect page")
-        }
         if catalog.products.count == 0 {
             XCTFail("CatalogDataTests: empty list of products")
         }

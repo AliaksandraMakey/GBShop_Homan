@@ -14,8 +14,8 @@ struct ProductResult: Codable {
     let name: String
     let price: Int
     let description: String
-    /// Coding Keys
-    enum ProductResultKeys: String, CodingKey {
+    /// Product result keys
+    enum CodingKeys: String, CodingKey {
         case result = "result"
         case name = "product_name"
         case price = "product_price"
