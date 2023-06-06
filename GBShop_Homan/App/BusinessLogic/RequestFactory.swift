@@ -41,12 +41,32 @@ class RequestFactory {
     }
     /// Make CatalogData Request
     func makeCatalogDataRequest() -> CatalogDataRequestFactory {
-        return CatalogData(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return CatalogData(errorParser: errorParser,
+                           sessionManager: commonSession,
+                           queue: sessionQueue)
     }
     /// Make Product Request
     func makeProductRequest() -> ProductRequestFactory {
         return ProductRequest(errorParser: errorParser,
                               sessionManager: commonSession,
                               queue: sessionQueue)
+    }
+    /// Make Reviews Request
+    func makeGetReviewsRequest() -> ReviewsRequestFactory {
+        return ReviewsRequest(errorParser: errorParser,
+                              sessionManager: commonSession,
+                              queue: sessionQueue)
+    }
+    /// Make Add Reviews Request
+    func makeAddReviewRequest() -> AddReviewRequestFactory {
+        return AddReviewRequest(errorParser: errorParser,
+                                sessionManager: commonSession,
+                                queue: sessionQueue)
+    }
+    /// Make Remove Reviews Request
+    func makeRemoveReviewRequest() -> RemoveReviewRequestFactory {
+        return RemoveReviewRequest(errorParser: errorParser,
+                                   sessionManager: commonSession,
+                                   queue: sessionQueue)
     }
 }

@@ -37,7 +37,7 @@ final class ChangeProfileTests: XCTestCase {
     }
     
     func testLogout() {
-        let profile = model.requestFactory.makeChangesProfileRequestFatory()
+        let profile = model.requestFactory.makeChangesProfileRequest()
         profile.changesProfile(idUser: model.idUser,
                                userName: model.userName,
                                password: model.password,

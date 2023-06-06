@@ -25,7 +25,7 @@ class ProductTests: XCTestCase {
     }
 
     func testGetProduct() {
-        let pruductRequest = requestFactory.makeProductRequestFatory()
+        let pruductRequest = requestFactory.makeProductRequest()
         pruductRequest.getProductBy(id: idProduct) { response in
             switch response.result {
             case .success(let product):

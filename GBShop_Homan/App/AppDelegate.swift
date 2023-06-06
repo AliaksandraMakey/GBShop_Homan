@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             authRequest()
             logoutRequest()
             changesUserDataRequest()
-        
-            return true
+
+        return true
         }
+
 
         private func authRequest() {
             let auth = requestFactory.makeAuthRequest()
