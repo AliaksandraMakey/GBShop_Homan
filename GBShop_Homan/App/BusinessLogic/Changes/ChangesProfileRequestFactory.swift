@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Changes Profile Request Factory
+// MARK: - Changes Profile Request Factory
 protocol ChangesProfileRequestFactory {
     func changesProfile(idUser: Int,
                        userName: String,
@@ -19,4 +19,3 @@ protocol ChangesProfileRequestFactory {
                        bio: String,
                completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void)
 }
-

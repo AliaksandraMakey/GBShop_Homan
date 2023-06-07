@@ -8,14 +8,14 @@
 import Foundation
 import Alamofire
 
-//MARK: - Reviews Request
+// MARK: - Reviews Request
 class ReviewsRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
     let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
-    
+
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
          queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
@@ -35,7 +35,7 @@ extension ReviewsRequest: ReviewsRequestFactory {
     }
 }
 extension ReviewsRequest {
-    //MARK: -  Reviews Request Router
+    // MARK: - Reviews Request Router
     struct ReviewsRequestRouter: RequestRouter {
         // properties
         let baseUrl: URL
@@ -49,4 +49,3 @@ extension ReviewsRequest {
         }
     }
 }
-

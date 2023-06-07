@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Error Parser
+// MARK: - Error Parser
 /// subscription AbstractErrorParser
 class ErrorParser: AbstractErrorParser {
     func parse(_ result: Error) -> Error {

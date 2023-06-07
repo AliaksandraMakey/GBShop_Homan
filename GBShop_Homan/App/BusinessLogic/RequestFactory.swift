@@ -7,7 +7,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Request Factory
+// MARK: - Request Factory
 class RequestFactory {
     // properties
     lazy var commonSession: Session = {

@@ -7,7 +7,7 @@ target 'GBShop_Homan' do
 
   # Pods for GBShop_Homan
         pod 'Alamofire'
-	pod 'Swinject'
+	pod 'SwiftLint'
 
   target 'GBShop_HomanTests' do
 

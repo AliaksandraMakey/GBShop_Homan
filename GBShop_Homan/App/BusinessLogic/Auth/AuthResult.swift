@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Auth Result
+// MARK: - Auth Result
 struct AuthResult: Codable {
     // properties
     let result: Int

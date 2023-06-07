@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Add Review Result
+// MARK: - Add Review Result
 struct AddReviewResult: Codable {
     // properties
     let result: Int

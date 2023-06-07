@@ -7,11 +7,11 @@
 
 import Alamofire
 
-//MARK: - Request Router Encoding
+// MARK: - Request Router Encoding
 enum RequestRouterEncoding {
     case url, json
 }
-//MARK: - protocol Request Router
+// MARK: - protocol Request Router
 protocol RequestRouter: URLRequestConvertible {
     // properties
     var baseUrl: URL { get }
@@ -21,7 +21,7 @@ protocol RequestRouter: URLRequestConvertible {
     var fullUrl: URL { get }
     var encoding: RequestRouterEncoding { get }
 }
-//MARK: - extension Request Router
+// MARK: - extension Request Router
 extension RequestRouter {
     // properties
     var fullUrl: URL {

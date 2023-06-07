@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Add Reviews Request
+// MARK: - Add Reviews Request
 class AddReviewRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -35,7 +35,7 @@ extension AddReviewRequest: AddReviewRequestFactory {
     }
 }
 extension AddReviewRequest {
-    //MARK: -  Add Reviews Request Router
+    // MARK: - Add Reviews Request Router
     struct AddReviewRequestRouter: RequestRouter {
         // properties
         let baseUrl: URL

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Logout
+// MARK: - Logout
 class Logout: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -33,7 +33,7 @@ extension Logout: LogoutRequestFactory {
     }
 }
 extension Logout {
-    //MARK: - Logout RequestRouter
+    // MARK: - Logout RequestRouter
     struct LogoutRouter: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
@@ -46,4 +46,3 @@ extension Logout {
         }
     }
 }
-

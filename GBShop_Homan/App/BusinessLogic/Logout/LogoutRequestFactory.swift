@@ -8,8 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - LogoutRequestFactory
+// MARK: - LogoutRequestFactory
 protocol LogoutRequestFactory {
-    func logout(idUser: Int,
-                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
+    func logout(idUser: Int, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
 }

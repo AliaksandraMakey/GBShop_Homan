@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Product Result
+// MARK: - Product Result
 struct ProductResult: Codable {
     // properties
     let result: Int

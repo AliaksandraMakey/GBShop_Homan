@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Catalog Data
+// MARK: - Catalog Data
 class CatalogData: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -38,7 +38,7 @@ extension CatalogData: CatalogDataRequestFactory {
 }
 
 extension CatalogData {
-    //MARK: - Catalog Data Router
+    // MARK: - Catalog Data Router
     struct CatalogDataRouter: RequestRouter {
         // properties
         let baseUrl: URL
@@ -47,7 +47,7 @@ extension CatalogData {
         let product: Product
         var parameters: Parameters? {
             return [
-                "product" : product,
+                "product" : product
             ]
         }
     }

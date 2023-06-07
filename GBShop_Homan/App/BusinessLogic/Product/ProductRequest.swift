@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Product Request
+// MARK: - Product Request
 class ProductRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -36,7 +36,7 @@ extension ProductRequest: ProductRequestFactory {
 }
 
 extension ProductRequest {
-    //MARK: - Product Request Router
+    // MARK: - Product Request Router
     struct ProductRequestRouter: RequestRouter {
         // properties
         let baseUrl: URL

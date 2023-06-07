@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Product Model
+// MARK: - Product Model
 struct Product: Codable {
     // properties
     let id: Int

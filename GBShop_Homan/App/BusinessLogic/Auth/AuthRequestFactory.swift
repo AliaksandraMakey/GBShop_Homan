@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: -  Auth Request Factory
+// MARK: - Auth Request Factory
 protocol AuthRequestFactory {
     func login(userName: String,
                password: String,

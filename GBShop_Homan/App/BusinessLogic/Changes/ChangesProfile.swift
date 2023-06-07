@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Changes Profile
+// MARK: - Changes Profile
 class ChangesProfile: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -41,7 +41,7 @@ extension ChangesProfile: ChangesProfileRequestFactory {
     }
 }
 extension ChangesProfile {
-    //MARK: - Changes Profile Router
+    // MARK: - Changes Profile Router
     struct ChangesProfileRouter: RequestRouter {
         // properties
         let baseUrl: URL
