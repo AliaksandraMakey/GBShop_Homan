@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-// MARK: - Add Reviews Request
+// MARK: - Request
 class AddReviewRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -29,14 +29,14 @@ extension AddReviewRequest: AddReviewRequestFactory {
     /// add review by product ID and user ID
     func addReview(idUser: Int, idProduct: Int, text: String, completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void) {
         if baseUrl != nil {
-            let requestModel = AddReviewRequestRouter(baseUrl: baseUrl!, idUser: idUser, idProduct: idProduct, text: text)
+            let requestModel = AddReviewRouter(baseUrl: baseUrl!, idUser: idUser, idProduct: idProduct, text: text)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
 extension AddReviewRequest {
     // MARK: - Add Reviews Request Router
-    struct AddReviewRequestRouter: RequestRouter {
+    struct AddReviewRouter: RequestRouter {
         // properties
         let baseUrl: URL
         let method: HTTPMethod = .get

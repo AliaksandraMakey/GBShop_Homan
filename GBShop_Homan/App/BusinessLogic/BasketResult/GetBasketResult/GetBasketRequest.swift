@@ -1,15 +1,14 @@
 //
-//  ProductRequest.swift
+//  GetBasketRequest.swift
 //  GBShop_Homan
 //
-//  Created by aaa on 22/05/2023.
+//  Created by aaa on 08/06/2023.
 //
 
 import Alamofire
-import Foundation
 
 // MARK: - Request
-class ProductRequest: AbstractRequestFactory {
+class GetBasketRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
@@ -24,28 +23,29 @@ class ProductRequest: AbstractRequestFactory {
         self.queue = queue
     }
 }
-/// subscription ProductRequestFactory
-extension ProductRequest: ProductRequestFactory {
-    /// get product by ID
-    func getProductBy(id: Int, completionHandler: @escaping (AFDataResponse<ProductResult>) -> Void) {
+/// subscription GetBasketRequestFactory
+extension GetBasketRequest: GetBasketRequestFactory {
+    /// get basket by user ID
+    func getBasket(idUser: Int, completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void) {
         if baseUrl != nil {
-            let requestModel = ProductRouter(baseUrl: baseUrl!, idProduct: id)
+            let requestModel = GetBasketRouter(baseUrl: baseUrl!,
+                                                idUser: idUser)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
 
-extension ProductRequest {
-    // MARK: - Product Request Router
-    struct ProductRouter: RequestRouter {
+extension GetBasketRequest {
+    // MARK: - Get Basket Router
+    struct GetBasketRouter: RequestRouter {
         // properties
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "getGoodById.json"
-        let idProduct: Int
+        let path: String = "getBasket.json"
+        let idUser: Int
         var parameters: Parameters? {
             return [
-                "id_product": idProduct
+                "id_user" : idUser
             ]
         }
     }

@@ -9,7 +9,6 @@ import XCTest
 import Alamofire
 @testable import GBShop_Homan
 
-
 final class ReviewsTests: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Testing of ordering methods")

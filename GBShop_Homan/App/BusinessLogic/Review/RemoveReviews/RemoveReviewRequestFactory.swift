@@ -10,5 +10,6 @@ import Alamofire
 // MARK: - Remove Review Request Factory
 protocol RemoveReviewRequestFactory {
     /// remove review by ID
-    func removeReview(id: Int, completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void)
+    func removeReview(id: Int,
+                      completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void)
 }

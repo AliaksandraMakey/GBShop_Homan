@@ -1,15 +1,14 @@
 //
-//  RemoveReviewRequest.swift
+//  DeleteFromBasketRequest.swift
 //  GBShop_Homan
 //
-//  Created by aaa on 24/05/2023.
+//  Created by aaa on 08/06/2023.
 //
 
 import Alamofire
-import Foundation
 
-// MARK: - Remove Review Request
-class RemoveReviewRequest: AbstractRequestFactory {
+// MARK: - Request
+class DeleteFromBasketRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
@@ -24,28 +23,27 @@ class RemoveReviewRequest: AbstractRequestFactory {
         self.queue = queue
     }
 }
-/// subscription RemoveReviewRequestFactory
-extension RemoveReviewRequest: RemoveReviewRequestFactory {
-    /// remove review by ID
-    func removeReview(id: Int, completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void) {
+/// subscription DeleteFromBasketRequestFactory
+extension DeleteFromBasketRequest: DeleteFromBasketRequestFactory {
+    func deleteFromBasket(idProduct: Int,
+                          completionHandler: @escaping (AFDataResponse<DeleteFromBasketResult>) -> Void) {
         if baseUrl != nil {
-            let requestModel = RemoveReviewRequestRouter(baseUrl: baseUrl!, idReview: id)
+            let requestModel = DeleteFromBasketRouter(baseUrl: baseUrl!, idProduct: idProduct)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
-
-extension RemoveReviewRequest {
-    // MARK: - Remove Review Request Router
-    struct RemoveReviewRequestRouter: RequestRouter {
+extension DeleteFromBasketRequest {
+    // MARK: - Delete From Basket Router
+    struct DeleteFromBasketRouter: RequestRouter {
         // properties
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "removeReview.json"
-        let idReview: Int
+        let path: String = "deleteFromBasket.json"
+        let idProduct: Int
         var parameters: Parameters? {
             return [
-                "id_review": idReview
+                "id_product" : idProduct
             ]
         }
     }

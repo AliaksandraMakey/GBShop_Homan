@@ -35,13 +35,13 @@ class RequestFactory {
     }
     /// Make ChangesProfile Request
     func makeChangesProfileRequest() -> ChangesProfileRequestFactory {
-        return ChangesProfile(errorParser: errorParser,
+        return ChangesProfileRequest(errorParser: errorParser,
                               sessionManager: commonSession,
                               queue: sessionQueue)
     }
     /// Make CatalogData Request
     func makeCatalogDataRequest() -> CatalogDataRequestFactory {
-        return CatalogData(errorParser: errorParser,
+        return CatalogDataRequest(errorParser: errorParser,
                            sessionManager: commonSession,
                            queue: sessionQueue)
     }
@@ -69,4 +69,16 @@ class RequestFactory {
                                    sessionManager: commonSession,
                                    queue: sessionQueue)
     }
+
+    func makeAddToBasketRequestFatory() -> AddToBasketRequestFactory {
+           return AddToBasketRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+       }
+
+       func makeDeleteFromBasketRequestFatory() -> DeleteFromBasketRequestFactory {
+           return DeleteFromBasketRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+       }
+
+       func makeGetBasketRequestFatory() -> GetBasketRequestFactory {
+           return GetBasketRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+       }
 }

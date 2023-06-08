@@ -1,15 +1,14 @@
 //
-//  ProductRequest.swift
+//  RemoveReviewRequest.swift
 //  GBShop_Homan
 //
-//  Created by aaa on 22/05/2023.
+//  Created by aaa on 24/05/2023.
 //
 
 import Alamofire
-import Foundation
 
 // MARK: - Request
-class ProductRequest: AbstractRequestFactory {
+class RemoveReviewRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
@@ -24,28 +23,28 @@ class ProductRequest: AbstractRequestFactory {
         self.queue = queue
     }
 }
-/// subscription ProductRequestFactory
-extension ProductRequest: ProductRequestFactory {
-    /// get product by ID
-    func getProductBy(id: Int, completionHandler: @escaping (AFDataResponse<ProductResult>) -> Void) {
+/// subscription RemoveReviewRequestFactory
+extension RemoveReviewRequest: RemoveReviewRequestFactory {
+    /// remove review by ID
+    func removeReview(id: Int, completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void) {
         if baseUrl != nil {
-            let requestModel = ProductRouter(baseUrl: baseUrl!, idProduct: id)
+            let requestModel = RemoveReviewRouter(baseUrl: baseUrl!, idReview: id)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
 
-extension ProductRequest {
-    // MARK: - Product Request Router
-    struct ProductRouter: RequestRouter {
+extension RemoveReviewRequest {
+    // MARK: - Remove Review Request Router
+    struct RemoveReviewRouter: RequestRouter {
         // properties
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "getGoodById.json"
-        let idProduct: Int
+        let path: String = "removeReview.json"
+        let idReview: Int
         var parameters: Parameters? {
             return [
-                "id_product": idProduct
+                "id_review": idReview
             ]
         }
     }

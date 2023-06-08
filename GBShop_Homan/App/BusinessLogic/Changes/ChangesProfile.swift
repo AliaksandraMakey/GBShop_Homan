@@ -8,8 +8,8 @@
 import Alamofire
 import Foundation
 
-// MARK: - Changes Profile
-class ChangesProfile: AbstractRequestFactory {
+// MARK: - Request
+class ChangesProfileRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
@@ -25,23 +25,31 @@ class ChangesProfile: AbstractRequestFactory {
     }
 }
 /// subscription ChangesProfileRequestFactory
-extension ChangesProfile: ChangesProfileRequestFactory {
+extension ChangesProfileRequest: ChangesProfileRequestFactory {
     func changesProfile(idUser: Int,
-                       userName: String,
-                       password: String,
-                       email: String,
-                       gender: String,
-                       creditCard: String,
-                       bio: String,
+                        userName: String,
+                        password: String,
+                        email: String,
+                        gender: String,
+                        creditCard: String,
+                        bio: String,
                         completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void) {
         if baseUrl != nil {
-            let requestModel = ChangesProfileRouter(baseUrl: baseUrl!, idUser: idUser, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+            let requestModel = ChangesProfileRouter(
+                baseUrl: baseUrl!,
+                idUser: idUser,
+                userName: userName,
+                password: password,
+                email: email,
+                gender: gender,
+                creditCard: creditCard,
+                bio: bio)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
-extension ChangesProfile {
-    // MARK: - Changes Profile Router
+extension ChangesProfileRequest {
+    // MARK: - Changes Profile Request Router
     struct ChangesProfileRouter: RequestRouter {
         // properties
         let baseUrl: URL
