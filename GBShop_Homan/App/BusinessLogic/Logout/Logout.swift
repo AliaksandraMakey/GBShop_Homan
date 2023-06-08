@@ -5,8 +5,8 @@
 //  Created by aaa on 18/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 // MARK: - Logout
 class Logout: AbstractRequestFactory {

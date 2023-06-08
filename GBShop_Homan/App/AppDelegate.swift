@@ -13,8 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let requestFactory = RequestFactory()
 
-    func application(_ application: UIApplication,
-                         didFinishLaunchingWithOptions launchOptions:
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
                          [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             authRequest()
             logoutRequest()
@@ -25,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         private func authRequest() {
             let auth = requestFactory.makeAuthRequest()
-            auth.login(userName: "Somebody", password: "mypassword") {
-                response in
+            auth.login(userName: "Somebody", password: "mypassword") { response in
                 switch response.result {
                 case .success(let login):
                     print(login)
@@ -55,8 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         private func logoutRequest() {
             let logout = requestFactory.makeLogoutRequest()
-            logout.logout(idUser: 123) {
-                response in
+            logout.logout(idUser: 123) { response in
                 switch response.result {
                 case .success(let login):
                     print(login)

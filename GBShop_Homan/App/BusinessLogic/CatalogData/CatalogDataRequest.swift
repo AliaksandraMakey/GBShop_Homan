@@ -5,8 +5,8 @@
 //  Created by aaa on 22/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 // MARK: - Catalog Data
 class CatalogData: AbstractRequestFactory {
@@ -47,7 +47,7 @@ extension CatalogData {
         let product: Product
         var parameters: Parameters? {
             return [
-                "product" : product
+                "product": product
             ]
         }
     }

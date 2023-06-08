@@ -5,8 +5,8 @@
 //  Created by aaa on 18/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 // MARK: - Changes Profile
 class ChangesProfile: AbstractRequestFactory {
@@ -56,13 +56,13 @@ extension ChangesProfile {
         let bio: String
         var parameters: Parameters? {
             return [
-                "id_user" : idUser,
-                "username" : userName,
-                "password" : password,
-                "email" : email,
+                "id_user": idUser,
+                "username": userName,
+                "password": password,
+                "email": email,
                 "gender": gender,
-                "credit_card" : creditCard,
-                "bio" : bio
+                "credit_card": creditCard,
+                "bio": bio
             ]
         }
     }

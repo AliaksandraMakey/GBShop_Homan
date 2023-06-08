@@ -5,8 +5,8 @@
 //  Created by aaa on 24/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 // MARK: - Add Reviews Request
 class AddReviewRequest: AbstractRequestFactory {
@@ -46,9 +46,9 @@ extension AddReviewRequest {
         let text: String
         var parameters: Parameters? {
             return [
-                "id_user" : idUser,
-                "id_product" : idProduct,
-                "text" : text
+                "id_user": idUser,
+                "id_product": idProduct,
+                "text": text
             ]
         }
     }

@@ -5,8 +5,8 @@
 //  Created by aaa on 12/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 // MARK: - Decodable Serializer
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
