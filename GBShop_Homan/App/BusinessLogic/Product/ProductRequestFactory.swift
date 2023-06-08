@@ -7,7 +7,7 @@
 
 import Alamofire
 
-//MARK: - Product Request Factory
+// MARK: - Product Request Factory
 protocol ProductRequestFactory {
     /// get product by ID
     func getProductBy(id: Int,

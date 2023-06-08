@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Post Stub
+// MARK: - Post Stub
 struct PostStub: Codable {
     // properties
     let userId: Int
@@ -15,11 +15,11 @@ struct PostStub: Codable {
     let title: String
     let body: String
 }
-//MARK: - Api Error Stub
+// MARK: - Api Error Stub
 enum ApiErrorStub: Error {
     case fatalError
 }
-//MARK: - Error Parser Stub
+// MARK: - Error Parser Stub
 struct ErrorParserStub: AbstractErrorParser {
     /// parse
     func parse(_ result: Error) -> Error {

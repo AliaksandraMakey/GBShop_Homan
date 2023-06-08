@@ -5,17 +5,17 @@
 //  Created by aaa on 24/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - Reviews Request
+// MARK: - Reviews Request
 class ReviewsRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
     let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
-    
+
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
          queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
@@ -35,7 +35,7 @@ extension ReviewsRequest: ReviewsRequestFactory {
     }
 }
 extension ReviewsRequest {
-    //MARK: -  Reviews Request Router
+    // MARK: - Reviews Request Router
     struct ReviewsRequestRouter: RequestRouter {
         // properties
         let baseUrl: URL
@@ -44,9 +44,8 @@ extension ReviewsRequest {
         let idProduct: Int
         var parameters: Parameters? {
             return [
-                "id_product" : idProduct
+                "id_product": idProduct
             ]
         }
     }
 }
-

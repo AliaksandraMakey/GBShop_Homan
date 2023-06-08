@@ -7,13 +7,13 @@
 
 import Alamofire
 
-//MARK: - protocol Abstract Request Factory
+// MARK: - protocol Abstract Request Factory
 protocol AbstractRequestFactory {
     // properties
     var errorParser: AbstractErrorParser { get }
     var sessionManager: Session { get }
     var queue: DispatchQueue? { get }
-    
+
     @discardableResult
     func request<T: Decodable>(
         request: URLRequestConvertible,

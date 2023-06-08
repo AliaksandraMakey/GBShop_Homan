@@ -5,10 +5,10 @@
 //  Created by aaa on 18/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - Changes Profile Request Factory
+// MARK: - Changes Profile Request Factory
 protocol ChangesProfileRequestFactory {
     func changesProfile(idUser: Int,
                        userName: String,
@@ -19,4 +19,3 @@ protocol ChangesProfileRequestFactory {
                        bio: String,
                completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void)
 }
-

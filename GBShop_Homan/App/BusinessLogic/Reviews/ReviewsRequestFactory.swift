@@ -7,7 +7,7 @@
 
 import Alamofire
 
-//MARK: - Reviews Request Factory
+// MARK: - Reviews Request Factory
 protocol ReviewsRequestFactory {
     /// get reviews by ID
     func getReviews(idProduct: Int,

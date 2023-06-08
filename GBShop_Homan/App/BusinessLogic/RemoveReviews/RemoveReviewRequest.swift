@@ -5,17 +5,17 @@
 //  Created by aaa on 24/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - Remove Review Request
+// MARK: - Remove Review Request
 class RemoveReviewRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
     let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
-    
+
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
          queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
@@ -36,7 +36,7 @@ extension RemoveReviewRequest: RemoveReviewRequestFactory {
 }
 
 extension RemoveReviewRequest {
-    //MARK: - Remove Review Request Router
+    // MARK: - Remove Review Request Router
     struct RemoveReviewRequestRouter: RequestRouter {
         // properties
         let baseUrl: URL
@@ -45,7 +45,7 @@ extension RemoveReviewRequest {
         let idReview: Int
         var parameters: Parameters? {
             return [
-                "id_review" : idReview
+                "id_review": idReview
             ]
         }
     }

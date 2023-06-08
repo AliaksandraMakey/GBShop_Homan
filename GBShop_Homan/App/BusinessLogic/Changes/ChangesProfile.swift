@@ -5,10 +5,10 @@
 //  Created by aaa on 18/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - Changes Profile
+// MARK: - Changes Profile
 class ChangesProfile: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -41,7 +41,7 @@ extension ChangesProfile: ChangesProfileRequestFactory {
     }
 }
 extension ChangesProfile {
-    //MARK: - Changes Profile Router
+    // MARK: - Changes Profile Router
     struct ChangesProfileRouter: RequestRouter {
         // properties
         let baseUrl: URL
@@ -56,13 +56,13 @@ extension ChangesProfile {
         let bio: String
         var parameters: Parameters? {
             return [
-                "id_user" : idUser,
-                "username" : userName,
-                "password" : password,
-                "email" : email,
+                "id_user": idUser,
+                "username": userName,
+                "password": password,
+                "email": email,
                 "gender": gender,
-                "credit_card" : creditCard,
-                "bio" : bio
+                "credit_card": creditCard,
+                "bio": bio
             ]
         }
     }

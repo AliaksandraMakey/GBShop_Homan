@@ -5,11 +5,10 @@
 //  Created by aaa on 18/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - LogoutRequestFactory
+// MARK: - LogoutRequestFactory
 protocol LogoutRequestFactory {
-    func logout(idUser: Int,
-                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
+    func logout(idUser: Int, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
 }

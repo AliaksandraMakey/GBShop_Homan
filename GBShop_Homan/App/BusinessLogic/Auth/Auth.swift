@@ -5,10 +5,10 @@
 //  Created by aaa on 12/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - Auth
+// MARK: - Auth
 class Auth: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -35,7 +35,7 @@ extension Auth: AuthRequestFactory {
     }
 }
 extension Auth {
-    //MARK: - Auth Router
+    // MARK: - Auth Router
     struct AuthRouter: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get

@@ -5,10 +5,10 @@
 //  Created by aaa on 22/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - Product Request
+// MARK: - Product Request
 class ProductRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
@@ -36,7 +36,7 @@ extension ProductRequest: ProductRequestFactory {
 }
 
 extension ProductRequest {
-    //MARK: - Product Request Router
+    // MARK: - Product Request Router
     struct ProductRequestRouter: RequestRouter {
         // properties
         let baseUrl: URL
@@ -45,7 +45,7 @@ extension ProductRequest {
         let idProduct: Int
         var parameters: Parameters? {
             return [
-                "id_product" : idProduct
+                "id_product": idProduct
             ]
         }
     }

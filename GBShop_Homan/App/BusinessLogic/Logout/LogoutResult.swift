@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Logout Result
+// MARK: - Logout Result
 struct LogoutResult: Codable {
     // properties
     let result: Int

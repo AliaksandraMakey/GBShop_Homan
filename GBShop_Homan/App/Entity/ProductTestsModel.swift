@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Product Tests Model
+// MARK: - Product Tests Model
 struct ProductTestsModel {
     // properties
     var requestFactory: RequestFactory!

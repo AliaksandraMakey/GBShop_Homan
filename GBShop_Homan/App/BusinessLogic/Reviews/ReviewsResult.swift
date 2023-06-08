@@ -7,12 +7,10 @@
 
 import Foundation
 
-
-//MARK: - Reviews Result
+// MARK: - Reviews Result
 struct ReviewsResult: Codable {
-    //TODO: - в store-api нет файла для всех Review. Обрабоать получение массива всех добавленых Review
+    // TODO: - в store-api нет файла для всех Review. Обрабоать получение массива всех добавленых Review
     // properties
 //    let result: Int
     let reviews: [Review]
 }
-

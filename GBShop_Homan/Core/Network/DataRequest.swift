@@ -5,12 +5,12 @@
 //  Created by aaa on 18/05/2023.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-//MARK: - extension Data Request
+// MARK: - extension Data Request
 extension DataRequest {
-    
+
     @discardableResult
     func responseCodable<T: Decodable>(
         errorParser: AbstractErrorParser,

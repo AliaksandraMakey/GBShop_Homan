@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Remove Review Result
+// MARK: - Remove Review Result
 struct RemoveReviewResult: Codable {
     // properties
     var result: Int

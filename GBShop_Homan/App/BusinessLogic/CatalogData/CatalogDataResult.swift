@@ -7,9 +7,8 @@
 
 import Foundation
 
-//MARK: - Catalog Data Result
+// MARK: - Catalog Data Result
 struct CatalogDataResult: Codable {
     // properties
     let products: [Product]
 }
-

@@ -7,9 +7,9 @@
 
 import Foundation
 
-//TODO: можете создать что-то типо TestsModel и там написать функции, которые будут возвращать готовую модель.
+// TODO: можете создать что-то типо TestsModel и там написать функции, которые будут возвращать готовую модель.
 
-//MARK: - User Tests Model
+// MARK: - User Tests Model
 struct UserTestsModel {
     // properties
     var requestFactory: RequestFactory!

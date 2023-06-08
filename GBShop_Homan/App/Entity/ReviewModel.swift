@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: - Review
+// MARK: - Review
 struct Review: Codable {
     // properties
     let idProduct: Int
