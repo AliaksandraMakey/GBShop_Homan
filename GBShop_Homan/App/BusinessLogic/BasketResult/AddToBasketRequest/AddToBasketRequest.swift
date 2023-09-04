@@ -1,15 +1,14 @@
 //
-//  ReviewsRequest.swift
+//  AddToBasketRequest.swift
 //  GBShop_Homan
 //
-//  Created by aaa on 24/05/2023.
+//  Created by aaa on 08/06/2023.
 //
 
 import Alamofire
-import Foundation
 
-// MARK: - Reviews Request
-class ReviewsRequest: AbstractRequestFactory {
+// MARK: - Request
+class AddToBasketRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
@@ -24,27 +23,32 @@ class ReviewsRequest: AbstractRequestFactory {
         self.queue = queue
     }
 }
-
-extension ReviewsRequest: ReviewsRequestFactory {
-    /// get reviews by product ID
-    func getReviews(idProduct: Int, completionHandler: @escaping (Alamofire.AFDataResponse<ReviewsResult>) -> Void) {
+/// subscription AddToBasketRequestFactory
+extension AddToBasketRequest: AddToBasketRequestFactory {
+    /// add to basket by ID
+    func addToBasket(idProduct: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<AddToBasketResult>) -> Void) {
         if baseUrl != nil {
-            let requestModel = ReviewsRequestRouter(baseUrl: baseUrl!, idProduct: idProduct)
+            let requestModel = AddToBasketRouter(baseUrl: baseUrl!,
+                                                 idProduct: idProduct,
+                                                 quantity: quantity)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
-extension ReviewsRequest {
-    // MARK: - Reviews Request Router
-    struct ReviewsRequestRouter: RequestRouter {
+
+extension AddToBasketRequest {
+    // MARK: - Add To Basket Router
+    struct AddToBasketRouter: RequestRouter {
         // properties
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "getReviews.json"
+        let path: String = "addToBasket.json"
         let idProduct: Int
+        let quantity: Int
         var parameters: Parameters? {
             return [
-                "id_product": idProduct
+                "id_product" : idProduct,
+                "quantity" : quantity
             ]
         }
     }

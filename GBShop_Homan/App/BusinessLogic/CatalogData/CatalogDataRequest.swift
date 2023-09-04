@@ -8,8 +8,8 @@
 import Alamofire
 import Foundation
 
-// MARK: - Catalog Data
-class CatalogData: AbstractRequestFactory {
+// MARK: - Request
+class CatalogDataRequest: AbstractRequestFactory {
     // properties
     let errorParser: AbstractErrorParser
     let sessionManager: Session
@@ -25,7 +25,7 @@ class CatalogData: AbstractRequestFactory {
     }
 }
 /// subscription ChangesProfileRequestFactory
-extension CatalogData: CatalogDataRequestFactory {
+extension CatalogDataRequest: CatalogDataRequestFactory {
     /// get product by ID and page number
     func getCatalogData(products: [Product], completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void) {
         if baseUrl != nil {
@@ -37,8 +37,8 @@ extension CatalogData: CatalogDataRequestFactory {
     }
 }
 
-extension CatalogData {
-    // MARK: - Catalog Data Router
+extension CatalogDataRequest {
+    // MARK: - Catalog Data Request Router
     struct CatalogDataRouter: RequestRouter {
         // properties
         let baseUrl: URL
