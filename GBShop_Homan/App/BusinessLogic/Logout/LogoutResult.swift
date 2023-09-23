@@ -9,6 +9,5 @@ import Foundation
 
 // MARK: - Logout Result
 struct LogoutResult: Codable {
-    // properties
-    let result: Int
+    let status: String
 }

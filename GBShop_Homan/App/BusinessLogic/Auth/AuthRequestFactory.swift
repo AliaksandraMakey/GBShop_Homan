@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Auth Request Factory
 protocol AuthRequestFactory {
-    func login(userName: String,
+    func login(login: String,
                password: String,
                completionHandler: @escaping
                (AFDataResponse<AuthResult>) -> Void)

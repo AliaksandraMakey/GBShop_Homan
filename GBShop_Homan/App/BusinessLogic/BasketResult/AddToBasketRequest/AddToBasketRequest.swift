@@ -13,7 +13,7 @@ class AddToBasketRequest: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue?
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
+    let baseUrl = URL(string: "http://localhost:8080")
 
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
@@ -23,9 +23,13 @@ class AddToBasketRequest: AbstractRequestFactory {
         self.queue = queue
     }
 }
-/// subscription AddToBasketRequestFactory
 extension AddToBasketRequest: AddToBasketRequestFactory {
-    /// add to basket by ID
+
+    // add to basket by ID
+    /// - Parameters:
+    ///   - idProduct: Int
+    ///   - quantity: Int
+    ///   - completionHandler: (AFDataResponse<AddToBasketResult>) -> Void
     func addToBasket(idProduct: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<AddToBasketResult>) -> Void) {
         if baseUrl != nil {
             let requestModel = AddToBasketRouter(baseUrl: baseUrl!,

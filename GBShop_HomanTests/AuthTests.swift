@@ -13,10 +13,10 @@ import Alamofire
 final class AuthTest: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Test for function login")
-    var model: UserTestsModel!
+    var model: UserUpdateModel!
     
     override func setUp() {
-        model = UserTestsModel(requestFactory: RequestFactory(), userName: "Somebody", password: "mypassword")
+        model = UserUpdateModel(requestFactory: RequestFactory(), userName: "Somebody", password: "mypassword")
     }
     
     override func tearDownWithError() throws {

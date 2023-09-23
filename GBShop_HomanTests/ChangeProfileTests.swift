@@ -12,10 +12,10 @@ import Alamofire
 final class ChangeProfileTests: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Change profiling test")
-    var model: UserTestsModel!
+    var model: UserUpdateModel!
     
     override func setUp() {
-        model = UserTestsModel(requestFactory: RequestFactory(),
+        model = UserUpdateModel(requestFactory: RequestFactory(),
                            idUser: 123,
                            userName: "Aliaks",
                            password: "geekbrains",

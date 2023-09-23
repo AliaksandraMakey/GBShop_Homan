@@ -11,35 +11,31 @@ import Alamofire
 
 class LogoutTests: XCTestCase {
     let expectation = XCTestExpectation(description: "Test for function logout")
-    var model: UserTestsModel!
+    var model: UserUpdateModel!
     
     override func setUp() {
-        model = UserTestsModel(requestFactory: RequestFactory(), idUser: 123)
+        model = UserUpdateModel(requestFactory: RequestFactory(), idUser: 123)
     }
     
     override func tearDownWithError() throws {
         model.requestFactory = nil
         model.idUser = nil
     }
-
+    
     func testLogout() {
         let logout = model.requestFactory.makeLogoutRequest()
-        logout.logout(idUser: model.idUser) { response in
-            switch response.result {
-            case .success(let logout):
-                self.checkLogoutResult(logout)
-                break
-            case .failure(let error):
-                XCTFail("LogoutTests: \(error.localizedDescription)")
-            }
-            self.expectation.fulfill()
-        }
+        logout.logout { response in
+            if let statusCode = response.response?.statusCode {
+                self.checkLogoutResult(LogoutResult(status: String(statusCode)))
+            } else {
+                XCTFail("LogoutTests: statusCode is nil")
+            }        }
         wait(for: [expectation], timeout: 10.0)
     }
-
-
+    
+    
     private func checkLogoutResult(_ logout: LogoutResult) {
-        if logout.result != 1 {
+        if logout.status != "200" {
             XCTFail("LogoutTests: wrong response from server")
         }
     }

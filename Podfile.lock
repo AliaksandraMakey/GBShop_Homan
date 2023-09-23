@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.7.1)
+  - KeychainSwift (20.0.0)
   - SwiftLint (0.52.2)
 
 DEPENDENCIES:
   - Alamofire
+  - KeychainSwift
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - KeychainSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   SwiftLint: 1ac76dac888ca05cb0cf24d0c85887ec1209961d
 
-PODFILE CHECKSUM: 6d851931721a95d2d61b55ac7a54bb16f71f9802
+PODFILE CHECKSUM: 7eb3e1482b61524a407d286c7c0f2135c0e24565
 
 COCOAPODS: 1.12.1

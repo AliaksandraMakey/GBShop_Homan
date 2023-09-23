@@ -10,5 +10,5 @@ import Foundation
 
 // MARK: - LogoutRequestFactory
 protocol LogoutRequestFactory {
-    func logout(idUser: Int, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
+    func logout(completionHandler: @escaping (AFDataResponse<Data>) -> Void)
 }
