@@ -10,12 +10,8 @@ import Foundation
 
 // MARK: - Changes Profile Request Factory
 protocol ChangesProfileRequestFactory {
-    func changesProfile(idUser: Int,
-                       userName: String,
-                       password: String,
-                       email: String,
-                       gender: String,
-                       creditCard: String,
-                       bio: String,
-               completionHandler: @escaping (AFDataResponse<ChangesProfileResult>) -> Void)
+    func changesProfile(fullName: String,
+                        gender: String,
+                        isAdmin: Bool,
+                        completionHandler: @escaping (AFDataResponse<Data>) -> Void)
 }

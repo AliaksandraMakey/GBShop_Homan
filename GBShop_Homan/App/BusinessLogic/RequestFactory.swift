@@ -14,8 +14,7 @@ class RequestFactory {
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
-        let manager = Session(configuration: configuration)
-        return manager
+        return Session(configuration: configuration, interceptor: AuthorizationRequestInterceptor.shared)
     }()
     let sessionQueue = DispatchQueue.global(qos: .utility)
     var errorParser: AbstractErrorParser {
@@ -24,6 +23,12 @@ class RequestFactory {
     /// Make Auth Request Error Parser
     func makeAuthRequest() -> AuthRequestFactory {
         return Auth(errorParser: errorParser,
+                    sessionManager: commonSession,
+                    queue: sessionQueue)
+    }
+    /// Make Auth Request Error Parser
+    func makeRegisterRequest() -> RegisterResultFactory {
+        return Register(errorParser: errorParser,
                     sessionManager: commonSession,
                     queue: sessionQueue)
     }

@@ -8,6 +8,7 @@ target 'GBShop_Homan' do
   # Pods for GBShop_Homan
         pod 'Alamofire'
 	pod 'SwiftLint'
+        pod 'KeychainSwift'
 
   target 'GBShop_HomanTests' do
 
