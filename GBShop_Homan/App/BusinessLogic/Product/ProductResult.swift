@@ -10,15 +10,11 @@ import Foundation
 // MARK: - Product Result
 struct ProductResult: Codable {
     // properties
-    let result: Int
     let name: String
+    let image: String
     let price: Int
+    let status: String
+    let evaluation: Int
     let description: String
-    /// Product result keys
-    enum CodingKeys: String, CodingKey {
-        case result = "result"
-        case name = "product_name"
-        case price = "product_price"
-        case description = "product_description"
-    }
+
 }

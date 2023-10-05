@@ -10,5 +10,7 @@ import Foundation
 
 // MARK: - LogoutRequestFactory
 protocol LogoutRequestFactory {
+    /// logout function
+    /// - Parameter completionHandler: AFDataResponse<Data> return HTTPStatus
     func logout(completionHandler: @escaping (AFDataResponse<Data>) -> Void)
 }

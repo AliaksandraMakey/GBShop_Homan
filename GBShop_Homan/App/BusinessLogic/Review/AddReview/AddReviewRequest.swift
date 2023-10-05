@@ -28,8 +28,8 @@ class AddReviewRequest: AbstractRequestFactory {
 extension AddReviewRequest: AddReviewRequestFactory {
     /// add review by product ID and user ID
     func addReview(idUser: Int, idProduct: Int, text: String, completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = AddReviewRouter(baseUrl: baseUrl!, idUser: idUser, idProduct: idProduct, text: text)
+        if let baseUrl {
+            let requestModel = AddReviewRouter(baseUrl: baseUrl, idUser: idUser, idProduct: idProduct, text: text)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }

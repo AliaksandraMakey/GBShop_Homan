@@ -10,5 +10,18 @@ import Alamofire
 
 // MARK: - Register Request Factory
 protocol RegisterResultFactory {
-    func register(fullName: String, email: String, gender: String, password: String, confirmPassword: String, completionHandler: @escaping (Alamofire.AFDataResponse<RegisterNewUserResult>) -> Void)
+    /// register function
+    /// - Parameters:
+    ///   - fullName: String
+    ///   - email: String
+    ///   - gender: String
+    ///   - password: String min 8 symbols
+    ///   - confirmPassword: String min 8 symbols
+    ///   - completionHandler: AFDataResponse<RegisterNewUserResult> return HTTPStatus
+    func register(fullName: String,
+                  email: String,
+                  gender: String,
+                  password: String,
+                  confirmPassword: String,
+                  completionHandler: @escaping (AFDataResponse<RegisterNewUserResult>) -> Void)
 }

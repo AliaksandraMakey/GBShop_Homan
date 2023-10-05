@@ -17,17 +17,25 @@ class TabBarViewController: UITabBarController {
     }
     private func generateTabBar() {
         viewControllers = [
-            generateVC(viewController: ProfileViewController(), title: "Профиль", image: UIImage(systemName:"person.fill")),
-            generateVC(viewController: CatalogViewController(), title: "Каталог", image: UIImage(systemName:"book.fill")),
-            generateVC(viewController: SettingViewController(), title: "Настройки", image: UIImage(systemName:"slider.horizontal.3"))
+            generateNavigationController(rootViewController: ProfileViewController(), title: "Профиль", image: UIImage(systemName:"person.fill")),
+            generateNavigationController(rootViewController: CatalogViewController(), title: "Каталог", image: UIImage(systemName:"book.fill")),
+            generateNavigationController(rootViewController: SettingViewController(), title: "Настройки", image: UIImage(systemName:"slider.horizontal.3"))
         ]
     }
-
-    private func generateVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
-        viewController.tabBarItem.title = title
-        viewController.tabBarItem.image = image
-        return viewController
+    private func generateNavigationController(rootViewController: UIViewController,
+                                              title: String,
+                                              image: UIImage?) ->
+    UIViewController {
+        let navigationVC = UINavigationController(rootViewController: rootViewController)
+        navigationVC.tabBarItem.title = title
+        navigationVC.tabBarItem.image = image
+        return navigationVC
     }
+//    private func generateVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
+//        viewController.tabBarItem.title = title
+//        viewController.tabBarItem.image = image
+//        return viewController
+//    }
     private func setTabBarAppearance () {
         let positionOnX: CGFloat = 10
     let positionOnY: CGFloat = 14

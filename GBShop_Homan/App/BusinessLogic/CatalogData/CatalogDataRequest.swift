@@ -28,9 +28,9 @@ class CatalogDataRequest: AbstractRequestFactory {
 extension CatalogDataRequest: CatalogDataRequestFactory {
     /// get product by ID and page number
     func getCatalogData(products: [Product], completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void) {
-        if baseUrl != nil {
+        if let baseUrl {
             for product in products {
-                let requestModel = CatalogDataRouter(baseUrl: baseUrl!, product: product)
+                let requestModel = CatalogDataRouter(baseUrl: baseUrl, product: product)
                 self.request(request: requestModel, completionHandler: completionHandler)
             }
         }

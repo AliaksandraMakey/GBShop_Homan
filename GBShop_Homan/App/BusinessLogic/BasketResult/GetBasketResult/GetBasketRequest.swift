@@ -27,8 +27,8 @@ class GetBasketRequest: AbstractRequestFactory {
 extension GetBasketRequest: GetBasketRequestFactory {
     /// get basket by user ID
     func getBasket(idUser: Int, completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = GetBasketRouter(baseUrl: baseUrl!,
+        if let baseUrl {
+            let requestModel = GetBasketRouter(baseUrl: baseUrl,
                                                 idUser: idUser)
             self.request(request: requestModel, completionHandler: completionHandler)
         }

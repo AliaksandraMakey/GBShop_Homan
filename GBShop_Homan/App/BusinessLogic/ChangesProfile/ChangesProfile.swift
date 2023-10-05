@@ -10,18 +10,25 @@ import Foundation
 
 // MARK: - Request
 class ChangesProfileRequest: BaseRequestFactory, ChangesProfileRequestFactory {
+    /// changes profile function
+    /// - Parameters:
+    ///   - fullName: String
+    ///   - gender: String
+    ///   - isAdmin: Bool
+    ///   - completionHandler: AFDataResponse<Data> return HTTPStatus
     func changesProfile(fullName: String,
                         gender: String,
                         isAdmin: Bool,
                         completionHandler: @escaping (AFDataResponse<Data>) -> Void) {
-        if baseUrl != nil {
+        if let baseUrl {
             let requestModel = ChangesProfileRouter(
-                baseUrl: baseUrl!,
+                baseUrl: baseUrl,
                 fullName: fullName,
                 isAdmin: isAdmin,
                 gender: gender
             )
-            self.request(request: requestModel, completionHandler: completionHandler)
+            self.request(request: requestModel,
+                         completionHandler: completionHandler)
         }
     }
 }

@@ -10,12 +10,20 @@ import Foundation
 
 // MARK: - Auth
 class Auth: BaseRequestFactory, AuthRequestFactory {
+    /// login function
+    /// - Parameters:
+    ///   - login: email(String)
+    ///   - password: String min 8 symbols
+    ///   - completionHandler: AFDataResponse<AuthResult>
     func login(login: String,
                password: String,
                completionHandler: @escaping (AFDataResponse<AuthResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = AuthRouter(baseUrl: baseUrl!, login: login, password: password)
-            self.request(request: requestModel, completionHandler: completionHandler)
+        if let baseUrl {
+            let requestModel = AuthRouter(baseUrl: baseUrl,
+                                          login: login,
+                                          password: password)
+            self.request(request: requestModel,
+                         completionHandler: completionHandler)
         }
     }
 }

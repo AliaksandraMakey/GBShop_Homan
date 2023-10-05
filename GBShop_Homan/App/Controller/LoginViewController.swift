@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         return buttonView
     }()
+
     private let registerMessageLabel: BaseLabelView = {
         let label = BaseLabelView(text: "Если вы еще не зарегистрированы, нажмите")
         return label
@@ -97,7 +98,7 @@ class LoginViewController: UIViewController {
                     tabBarViewController.modalPresentationStyle = .fullScreen
                     self.present(tabBarViewController, animated: true, completion: nil)
 //                }
-
+//
 //            case .failure(let error):
 //                print(error.localizedDescription)
 //            }
@@ -109,33 +110,3 @@ class LoginViewController: UIViewController {
         self.present(registerViewController, animated: true, completion: nil)
     }
 }
-
-//    private let signUpButton: UIButton = {
-//        let button = UIButton()
-//          button.setTitle("Войти", for: .normal)
-//          button.setTitleColor(.white, for: .normal)
-//          button.backgroundColor = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
-//          button.layer.cornerRadius = 10.0
-//          button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
-//        button.titleEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-//        button.showsTouchWhenHighlighted = true
-//          button.translatesAutoresizingMaskIntoConstraints = false
-//        button.widthAnchor.constraint(equalToConstant: 150 + 16).isActive = true
-//           button.heightAnchor.constraint(equalToConstant: 16 + 16).isActive = true
-//          return button
-//    }()
-//
-//    private let registerButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Зарегестрироваться", for: .normal)
-//          button.setTitleColor(.white, for: .normal)
-//          button.backgroundColor = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
-//          button.layer.cornerRadius = 10.0
-//          button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
-//        button.titleEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-//        button.showsTouchWhenHighlighted = true
-//          button.translatesAutoresizingMaskIntoConstraints = false
-//        button.widthAnchor.constraint(equalToConstant: 250 + 16).isActive = true
-//           button.heightAnchor.constraint(equalToConstant: 16 + 16).isActive = true
-//          return button
-//    }()

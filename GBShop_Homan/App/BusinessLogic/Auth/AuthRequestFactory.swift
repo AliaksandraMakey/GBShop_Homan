@@ -10,6 +10,12 @@ import Foundation
 
 // MARK: - Auth Request Factory
 protocol AuthRequestFactory {
+
+    /// login function
+    /// - Parameters:
+    ///   - login: email(String)
+    ///   - password: String min 8 symbols
+    ///   - completionHandler: AFDataResponse<AuthResult>
     func login(login: String,
                password: String,
                completionHandler: @escaping

@@ -10,15 +10,30 @@ import Foundation
 
 // MARK: - Auth
 class Register: BaseRequestFactory, RegisterResultFactory {
+    /// register function
+    /// - Parameters:
+    ///   - fullName: String
+    ///   - email: String
+    ///   - gender: String
+    ///   - password: String min 8 symbols
+    ///   - confirmPassword: String min 8 symbols
+    ///   - completionHandler: AFDataResponse<RegisterNewUserResult>
     func register(fullName: String,
                   email: String,
                   gender: String,
                   password: String,
                   confirmPassword: String,
-                  completionHandler: @escaping (Alamofire.AFDataResponse<RegisterNewUserResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = RegisterRouter(baseUrl: baseUrl!, fullName: fullName, email: email, gender: gender, password: password, confirmPassword: confirmPassword)
-            self.request(request: requestModel, completionHandler: completionHandler)
+                  completionHandler: @escaping (AFDataResponse<RegisterNewUserResult>) -> Void) {
+        if let baseUrl {
+            let requestModel = RegisterRouter(baseUrl: baseUrl,
+                                              fullName: fullName,
+                                              email: email,
+                                              gender: gender,
+                                              password: password,
+                                              confirmPassword: confirmPassword)
+
+            self.request(request: requestModel,
+                         completionHandler: completionHandler)
         }
     }
 }

@@ -28,8 +28,8 @@ class ProductRequest: AbstractRequestFactory {
 extension ProductRequest: ProductRequestFactory {
     /// get product by ID
     func getProductBy(id: Int, completionHandler: @escaping (AFDataResponse<ProductResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = ProductRouter(baseUrl: baseUrl!, idProduct: id)
+        if let baseUrl {
+            let requestModel = ProductRouter(baseUrl: baseUrl, idProduct: id)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }

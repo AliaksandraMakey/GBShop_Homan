@@ -31,8 +31,8 @@ extension AddToBasketRequest: AddToBasketRequestFactory {
     ///   - quantity: Int
     ///   - completionHandler: (AFDataResponse<AddToBasketResult>) -> Void
     func addToBasket(idProduct: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<AddToBasketResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = AddToBasketRouter(baseUrl: baseUrl!,
+        if let baseUrl {
+            let requestModel = AddToBasketRouter(baseUrl: baseUrl,
                                                  idProduct: idProduct,
                                                  quantity: quantity)
             self.request(request: requestModel, completionHandler: completionHandler)

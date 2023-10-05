@@ -23,8 +23,11 @@ enum ApiErrorStub: Error {
 struct ErrorParserStub: AbstractErrorParser {
     /// parse
     func parse(_ result: Error) -> Error {
-        return ApiErrorStub.fatalError }
-    func parse(response: HTTPURLResponse?, data: Data?, error: Error?) -> Error? {
+        return ApiErrorStub.fatalError
+    }
+    func parse(response: HTTPURLResponse?,
+               data: Data?,
+               error: Error?) -> Error? {
         return error
     }
 }

@@ -28,8 +28,8 @@ class DeleteFromBasketRequest: AbstractRequestFactory {
 extension DeleteFromBasketRequest: DeleteFromBasketRequestFactory {
     func deleteFromBasket(idProduct: Int,
                           completionHandler: @escaping (AFDataResponse<DeleteFromBasketResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = DeleteFromBasketRouter(baseUrl: baseUrl!, idProduct: idProduct)
+        if let baseUrl {
+            let requestModel = DeleteFromBasketRouter(baseUrl: baseUrl, idProduct: idProduct)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
