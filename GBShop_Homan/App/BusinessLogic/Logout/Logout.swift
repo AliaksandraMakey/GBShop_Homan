@@ -8,28 +8,29 @@
 import Alamofire
 import Foundation
 
-// MARK: - Logout
-class Logout: BaseRequestFactory, LogoutRequestFactory {
-    /// logout function
-    /// - Parameter completionHandler: AFDataResponse<Data>
-    func logout(completionHandler: @escaping (Alamofire.AFDataResponse<Data>) -> Void) {
+class Logout: BaseRequestFactory , LogoutRequestFactory {
+    /// Logs out the user.
+    ///
+    /// - Parameter completionHandler: A closure that handles the result of the logout operation as `Result<Void, Error>`.
+    func logout(completionHandler: @escaping (Result<Void, Error>) -> Void) {
         if let baseUrl {
             let requestModel = LogoutRouter(baseUrl: baseUrl)
-            var test = try? requestModel.asURLRequest()
-            var headers = HTTPHeaders.init()
-            headers.add(HTTPHeader.authorization(bearerToken: LocalStorageManager.shared.getAccessTokenString()))
-            test?.headers = headers
-            self.request(request: test ?? requestModel,
-                         completionHandler: completionHandler)
+            let requestWithToken = addTokenToRequest(requestModel: requestModel)
+            AF.request(requestWithToken).response { response in
+                self.processResponse(response: response) { result in
+                    completionHandler(result)
+                }
+            }
         }
     }
 }
+
 extension Logout {
-    // MARK: - Logout RequestRouter
+    /// A structure representing the request route for logging out the user.
     struct LogoutRouter: RequestRouter {
         var parameters: Alamofire.Parameters?
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "/api/auth/logout"
+        let path: String = "/api/logout"
     }
 }

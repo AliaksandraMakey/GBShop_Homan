@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: - Register New User Result
 struct RegisterNewUserResult: Codable {
+    // MARK: - Properties
     var fullName: String
     var gender: String
     var email: String

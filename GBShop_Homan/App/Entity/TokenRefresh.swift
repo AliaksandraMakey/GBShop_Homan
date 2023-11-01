@@ -7,8 +7,9 @@
 
 import Foundation
 
+// MARK: - Token Refresh Model
  struct TokenRefresh: Codable {
-
+     // MARK: - Properties
     public var refresh: String
     public var access: String
 

@@ -8,47 +8,43 @@
 import Alamofire
 import Foundation
 
-// MARK: - Request
-class CatalogDataRequest: AbstractRequestFactory {
-    // properties
-    let errorParser: AbstractErrorParser
-    let sessionManager: Session
-    let queue: DispatchQueue?
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")
-
-    init(errorParser: AbstractErrorParser,
-         sessionManager: Session,
-         queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
-        self.errorParser = errorParser
-        self.sessionManager = sessionManager
-        self.queue = queue
-    }
-}
-/// subscription ChangesProfileRequestFactory
-extension CatalogDataRequest: CatalogDataRequestFactory {
-    /// get product by ID and page number
-    func getCatalogData(products: [Product], completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void) {
+class CatalogDataRequest: BaseRequestFactory, CatalogDataRequestFactory {
+    /// Fetch catalog data and provide the result to the completion handler.
+    ///
+    /// - Parameter completionHandler: A closure that receives the result of the catalog data retrieval.
+    func getCatalogData(completionHandler: @escaping (Result<[Product], Error>) -> Void) {
         if let baseUrl {
-            for product in products {
-                let requestModel = CatalogDataRouter(baseUrl: baseUrl, product: product)
-                self.request(request: requestModel, completionHandler: completionHandler)
+            let requestModel = CatalogDataRouter(baseUrl: baseUrl)
+            var request = try? requestModel.asURLRequest()
+
+            AF.request(request!).response { response in
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        do {
+                            let products = try JSONDecoder().decode([Product].self, from: data)
+                            completionHandler(.success(products))
+                        } catch {
+                            completionHandler(.failure(error))
+                        }
+                    } else {
+                        completionHandler(.failure(AFError.responseValidationFailed(reason: .dataFileNil)))
+                    }
+                case .failure(let error):
+                    completionHandler(.failure(error))
+                }
             }
         }
     }
 }
 
 extension CatalogDataRequest {
-    // MARK: - Catalog Data Request Router
+    /// Structure representing the route for catalog data.
     struct CatalogDataRouter: RequestRouter {
-        // properties
+        /// The base URL for the request.
+        var parameters: Alamofire.Parameters?
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
-        let product: Product
-        var parameters: Parameters? {
-            return [
-                "product": product
-            ]
-        }
+        let path: String = "/api/product"
     }
 }

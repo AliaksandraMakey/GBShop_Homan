@@ -8,7 +8,10 @@
 import UIKit
 
 enum SettingProperties {
-    case notificationUpdateCatalog, notificationAppearanceSaveGoods, notificationDiscount
+    case notificationUpdateCatalog,
+         notificationAppearanceSaveGoods,
+         notificationDiscount
+
     var itemLabel: String {
         switch self {
         case .notificationUpdateCatalog:

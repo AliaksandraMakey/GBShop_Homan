@@ -35,7 +35,7 @@ class ChangesProfileRequest: BaseRequestFactory, ChangesProfileRequestFactory {
 extension ChangesProfileRequest {
     // MARK: - Changes Profile Request Router
     struct ChangesProfileRouter: RequestRouter {
-        // properties
+        /// Properties required to make the HTTP request
         let baseUrl: URL
         let method: HTTPMethod = .put
         let path: String = "/api/user/update"

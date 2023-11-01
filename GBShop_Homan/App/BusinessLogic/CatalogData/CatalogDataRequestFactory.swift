@@ -8,9 +8,9 @@
 import Alamofire
 import Foundation
 
-// MARK: - Catalog Data Request Factory
 protocol CatalogDataRequestFactory {
-    /// get product 
-    func getCatalogData(products: [Product], completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void)
-
+    /// Retrieves catalog data.
+    /// - Parameter completionHandler: A closure that is called upon completion with a result containing an array of `Product` or an error.
+    func getCatalogData(completionHandler: @escaping (Result<[Product], Error>) -> Void)
 }
+

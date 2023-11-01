@@ -8,13 +8,13 @@
 import Alamofire
 import Foundation
 
-// MARK: - Auth
-class Auth: BaseRequestFactory, AuthRequestFactory {
-    /// login function
+class Auth: BaseRequestFactory {
+    /// Log in a user with the provided login and password.
+    ///
     /// - Parameters:
-    ///   - login: email(String)
-    ///   - password: String min 8 symbols
-    ///   - completionHandler: AFDataResponse<AuthResult>
+    ///   - login: The user's login or email.
+    ///   - password: The user's password.
+    ///   - completionHandler: A closure that receives the authentication result as an `AFDataResponse`.
     func login(login: String,
                password: String,
                completionHandler: @escaping (AFDataResponse<AuthResult>) -> Void) {
@@ -27,18 +27,23 @@ class Auth: BaseRequestFactory, AuthRequestFactory {
         }
     }
 }
-extension Auth {
-    // MARK: - Auth Router
+
+extension Auth: AuthRequestFactory {
+    /// Structure representing the route for user auth.
     struct AuthRouter: RequestRouter {
+        /// The base URL for the request.
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "/api/auth/login"
         let login: String
         let password: String
+        /// The parameters to be included in the request.
         var parameters: Parameters? {
             return [
                 "login": login,
                 "password": password
-            ]}
+            ]
+        }
     }
 }
+
