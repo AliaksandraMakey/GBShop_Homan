@@ -58,7 +58,7 @@ class RequestFactory {
     }
 
     /// Factory method to create a request for getting all products in the user's basket.
-    func makeGetAllBasketProductRequestFatory() -> GetAllBasketProductsRequestFactory {
+    func makeGetAllBasketProduct() -> GetAllBasketProductsRequestFactory {
         return GetAllBasketProductsRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
@@ -76,5 +76,12 @@ class RequestFactory {
     func makeAddProductToBasket() -> AddProductToBasketRequestFactory {
         return AddProductToBasketRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
-
+    /// Factory method to create a request for getting total price from user's basket.
+    func makeGetTotalPrice() -> GetTotalPriceBasketRequestFactory {
+        return GetTotalPriceBasketRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+    /// Factory method to create a request for creating order from user's basket.
+    func makeCreateOrderFromUsersBasket() -> CreateOrderRequestFactory {
+        return CreateOrderRequest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
 }

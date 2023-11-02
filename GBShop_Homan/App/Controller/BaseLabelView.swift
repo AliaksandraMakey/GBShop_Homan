@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseLabelView: UILabel {
+final class BaseLabelView: UILabel {
     // MARK: - Lifecycle
     init(text: String?, size: CGFloat, weight: UIFont.Weight) {
         super.init(frame: .zero)

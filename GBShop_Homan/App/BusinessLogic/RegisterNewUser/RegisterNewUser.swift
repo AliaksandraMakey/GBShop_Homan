@@ -24,7 +24,8 @@ class Register: BaseRequestFactory, RegisterResultFactory {
                   gender: String,
                   password: String,
                   confirmPassword: String,
-                  completionHandler: @escaping (AFDataResponse<RegisterNewUserResult>) -> Void) {
+                  completionHandler:
+                  @escaping (AFDataResponse<RegisterNewUserResult>) -> Void) {
         if let baseUrl {
             let requestModel = RegisterRouter(baseUrl: baseUrl,
                                               fullName: fullName,
@@ -50,7 +51,7 @@ extension Register {
         let gender: String
         let password: String
         let confirmPassword: String
-        
+
         /// The parameters to be included in the request.
         var parameters: Parameters? {
             return [

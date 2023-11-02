@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Review
 struct Review: Codable {
-    // properties
+    // MARK: - Properties
     let idProduct: Int
     let idUser: Int
     let text: String

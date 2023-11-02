@@ -10,7 +10,7 @@ import Alamofire
 
 /// A protocol for handling user registration and receiving the result.
 protocol RegisterResultFactory {
-    
+
     /// Register a new user with the provided information and receive the registration result.
     ///
     /// - Parameters:
@@ -25,5 +25,6 @@ protocol RegisterResultFactory {
                   gender: String,
                   password: String,
                   confirmPassword: String,
-                  completionHandler: @escaping (AFDataResponse<RegisterNewUserResult>) -> Void)
+                  completionHandler:
+                  @escaping (AFDataResponse<RegisterNewUserResult>) -> Void)
 }

@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Product Tests Model
 struct ProductTestsModel {
-    // properties
+    // MARK: - Properties
     var requestFactory: RequestFactory!
     var idProduct: Int!
     var pageNumber: Int!

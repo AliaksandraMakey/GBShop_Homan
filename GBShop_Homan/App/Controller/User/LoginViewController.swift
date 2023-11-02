@@ -45,10 +45,13 @@ class LoginViewController: UIViewController {
     // MARK: - Setup subviews
     private func setupViews() {
         view.addSubview(loginTextField)
+        loginTextField.addShadow()
         view.addSubview(passwordTextField)
+        passwordTextField.addShadow()
         view.addSubview(signUpButton)
         view.addSubview(registerButton)
         view.addSubview(registerMessageLabel)
+        registerMessageLabel.addShadow()
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -65,10 +68,10 @@ class LoginViewController: UIViewController {
             passwordTextField.widthAnchor.constraint(equalToConstant: 300),
             // signUpButton
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            signUpButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
             // registerMessageLabel
             registerMessageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            registerMessageLabel.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 20),
+            registerMessageLabel.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 150),
             // registerButton
             registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             registerButton.topAnchor.constraint(equalTo: registerMessageLabel.bottomAnchor, constant: 10)

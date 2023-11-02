@@ -7,8 +7,7 @@
 
 import UIKit
 
-// TODO: - сделать кастомным элементом  incrementButton и decrementButton
-// TODO: - сделать картинки на бэке и добавить метод конвертации
+// TODO: - 1. сделать кастомным элементом  incrementButton и decrementButton. 2. сделать картинки на бэке и добавить метод конвертации
 class TableViewCell: UITableViewCell, UITextFieldDelegate {
     // MARK: - Properties
     weak var delegate: CustomTableCellDelegate?

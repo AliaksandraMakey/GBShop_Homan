@@ -65,14 +65,14 @@ class AlertAddMoneyInBalanceViewController: UIViewController {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             // whiteView
-            whiteView.widthAnchor.constraint(equalToConstant: 350),
-            whiteView.heightAnchor.constraint(equalToConstant: 350),
+            whiteView.widthAnchor.constraint(equalToConstant: 250),
+            whiteView.heightAnchor.constraint(equalToConstant: 250),
             whiteView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             whiteView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             // enterAmountLabel
             enterAmountLabel.topAnchor.constraint(equalTo: whiteView.topAnchor, constant: 20),
-            enterAmountLabel.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: 10),
-            enterAmountLabel.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -10),
+            enterAmountLabel.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: 15),
+            enterAmountLabel.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -15),
             enterAmountLabel.widthAnchor.constraint(equalToConstant: 60),
             enterAmountLabel.heightAnchor.constraint(equalToConstant: 60),
             // amountTextField
@@ -83,13 +83,13 @@ class AlertAddMoneyInBalanceViewController: UIViewController {
             amountTextField.heightAnchor.constraint(equalToConstant: 60),
             // addButton
             addButton.topAnchor.constraint(equalTo: amountTextField.bottomAnchor, constant: 10),
-            addButton.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: 10),
-            addButton.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -10),
-            addButton.widthAnchor.constraint(equalToConstant: 60),
-            addButton.heightAnchor.constraint(equalToConstant: 60),
+            addButton.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: 15),
+            addButton.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -15),
+//            addButton.widthAnchor.constraint(equalToConstant: 44),
+            addButton.heightAnchor.constraint(equalToConstant: 44),
             // closeButton
             closeButton.topAnchor.constraint(equalTo: whiteView.topAnchor, constant: 10),
-            closeButton.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -10),
+            closeButton.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -5),
             closeButton.widthAnchor.constraint(equalToConstant: 40),
             closeButton.heightAnchor.constraint(equalToConstant: 40)
         ])

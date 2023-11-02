@@ -76,16 +76,12 @@ class ChangeProfileController: UIViewController {
     // MARK: - Actions
     @objc private func updateUserDateButtonTapped() {
         let profile = requestFactory.makeChangesProfileRequest()
-        profile.changesProfile(fullName: fullNameTextField.text ?? "", gender: genderTextField.text ?? "", isAdmin: false) { response in
-            switch response.response?.statusCode {
-            case 201:
+        profile.changesProfile(fullName: fullNameTextField.text ?? "", gender: genderTextField.text ?? "", isAdmin: false) { result in
+            switch result {
+            case .success:
                 self.showSuccessAlert()
-            case 200:
-                self.showSuccessAlert()
-            case let statusCode?:
-                print("User is not registered, error status - \(statusCode)")
-            default:
-                print("User is not registered")
+            case .failure(let error):
+                print(error)
             }
         }
     }

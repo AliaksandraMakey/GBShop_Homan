@@ -9,45 +9,30 @@ import XCTest
 import Alamofire
 @testable import GBShop_Homan
 
-final class ChangeProfileTests: XCTestCase {
+class ChangeProfileTests: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Change profiling test")
-    var model: UserUpdateModel!
+    var requestFactory: RequestFactory!
     
     override func setUp() {
-        model = UserUpdateModel(requestFactory: RequestFactory(),
-                           idUser: 123,
-                           userName: "Aliaks",
-                           password: "geekbrains",
-                           email: "Aliaksandra.makey@gmail.com",
-                           gender: "f",
-                           creditCard: "1234-5678-1234-5678",
-                           bio: "Some text")
+        requestFactory = RequestFactory()
     }
     
     override func tearDown() {
-        model.requestFactory = nil
-        model.idUser = nil
-        model.userName = nil
-        model.password = nil
-        model.email = nil
-        model.gender = nil
-        model.creditCard = nil
-        model.bio = nil
+        requestFactory = nil
     }
     
-    func testLogout() {
-        let profile = model.requestFactory.makeChangesProfileRequest()
-        profile.changesProfile(idUser: model.idUser,
-                               userName: model.userName,
-                               password: model.password,
-                               email: model.email,
-                               gender: model.gender,
-                               creditCard: model.creditCard,
-                               bio: model.bio) { response in
-            switch response.result {
-            case .success(let profile):
-                self.checkChangeProfileResult(profile)
+    func testChangeProfile() {
+        let profileRequest = requestFactory.makeChangesProfileRequest()
+        let fullName = "Updated Full Name"
+        let gender = "F"
+        let isAdmin = true
+        
+        profileRequest.changesProfile(fullName: fullName, gender: gender, isAdmin: isAdmin) { response in
+            switch response {
+            case .success:
+                // The request was successful, no further action needed.
+                break
             case .failure(let error):
                 XCTFail("ChangeProfileTests: \(error.localizedDescription)")
             }
@@ -55,12 +40,5 @@ final class ChangeProfileTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 10.0)
-    }
-    
-    private func checkChangeProfileResult(_ profile: ChangesProfileResult) {
-        if profile.result != 1 {
-            
-            XCTFail("ChangeProfileTests: wrong response from server")
-        }
     }
 }

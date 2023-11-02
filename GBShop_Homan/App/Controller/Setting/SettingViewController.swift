@@ -78,7 +78,9 @@ let updateCatalogLabel = SettingProperties.notificationUpdateCatalog.itemLabel
     private func setupViews() {
         view.addSubview(titleLabel)
         view.addSubview(lineView)
+        lineView.addShadow()
         view.addSubview(settingStackView)
+        settingStackView.addShadow()
         view.addSubview(changeProfileButton)
         view.addSubview(quitProfileButton)
         changeProfileButton.translatesAutoresizingMaskIntoConstraints = false

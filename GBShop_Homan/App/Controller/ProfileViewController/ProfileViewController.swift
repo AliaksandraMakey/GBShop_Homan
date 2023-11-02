@@ -11,58 +11,82 @@ class ProfileViewController: UIViewController {
     // MARK: - Properties
     let requestFactory = RequestFactory()
     var basketProducts = [BasketProduct]()
+    var totalPrice: Double = 0.0 {
+        didSet {
+            totalPriceLabel.text = String(format: "%.2f", totalPrice)
+        }
+    }
     // MARK: - UI components
     private let profileLabel = BaseLabelView(text: "Личный кабинет", size: 24, weight: .bold)
     private let lineView = BaseLineView()
     private let balanceLabel = BaseLabelView(text: "Мои финансы", size: 14, weight: .bold)
     private let balanceLineView = BaseLineView()
     private let basketLabel = BaseLabelView(text: "Моя корзина", size: 14, weight: .bold)
+    private var totalValueProductLabel = BaseLabelView(text: "Стоимость всех товаров:", size: 14, weight: .bold)
+    private lazy var totalPriceLabel: BaseLabelView = {
+        let totalPrice = "\(totalPrice)"
+        return BaseLabelView(text: totalPrice, size: 16, weight: .bold)
+    }()
     private let basketLineView = BaseLineView()
-    private let myBalance = TransparentButtonView(title: "Проверить баланс", size: UIScreen.main.bounds.width)
-    private let addMoneyToBalance = TransparentButtonView(title: "Пополнить баланс", size: UIScreen.main.bounds.width)
+    private let myBalanceButton = TransparentButtonView(title: "Проверить баланс", size: UIScreen.main.bounds.width)
+    private let addMoneyToBalanceButton = TransparentButtonView(title: "Пополнить баланс", size: UIScreen.main.bounds.width)
+    private let createOrderButton = TransparentButtonView(title: "Оформить заказ", size: UIScreen.main.bounds.width)
     // MARK: - TableView
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height )
         table.delegate = self
         table.dataSource = self
-        
+
         table.backgroundColor = .backgroundColor
         // Register a Cell for a Collection
         table.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 2 * 100, right: 0)
+        table.contentInset = contentInset
         return table
     }()
     // MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadBasketProductData()
+        updateTotalPrice()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         setupViews()
         setupConstraints()
-        //        loadBasketProductData()
         setupActions()
     }
     // MARK: - Setup actions
     private func setupActions() {
-        myBalance.addTarget(self, action: #selector(checkMyBalanceTapped), for: .touchUpInside)
-        addMoneyToBalance.addTarget(self, action: #selector(addMoneyToBalanceTapped), for: .touchUpInside)
+        myBalanceButton.addTarget(self, action: #selector(checkMyBalanceTapped), for: .touchUpInside)
+        addMoneyToBalanceButton.addTarget(self, action: #selector(addMoneyToBalanceTapped), for: .touchUpInside)
+        createOrderButton.addTarget(self, action: #selector(createOrderTapped), for: .touchUpInside)
     }
     // MARK: - Setup subviews
     private func setupViews() {
         view.addSubview(profileLabel)
         view.addSubview(lineView)
+        lineView.addShadow()
         view.addSubview(balanceLabel)
+        balanceLabel.addShadow()
         view.addSubview(balanceLineView)
         view.addSubview(basketLabel)
+        basketLabel.addShadow()
         view.addSubview(basketLineView)
-        view.addSubview(myBalance)
-        view.addSubview(addMoneyToBalance)
+        basketLineView.addShadow()
+        view.addSubview(myBalanceButton)
+        view.addSubview(addMoneyToBalanceButton)
+        view.addSubview(totalValueProductLabel)
+        totalValueProductLabel.addShadow()
+        view.addSubview(totalPriceLabel)
+        totalPriceLabel.addShadow()
+        view.addSubview(createOrderButton)
         view.addSubview(tableView)
-        myBalance.translatesAutoresizingMaskIntoConstraints = false
-        addMoneyToBalance.translatesAutoresizingMaskIntoConstraints = false
+        myBalanceButton.translatesAutoresizingMaskIntoConstraints = false
+        addMoneyToBalanceButton.translatesAutoresizingMaskIntoConstraints = false
+        createOrderButton.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     // MARK: - Setup constraints
@@ -81,40 +105,78 @@ class ProfileViewController: UIViewController {
             balanceLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 1),
             balanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6),
             balanceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -6),
-            balanceLabel.heightAnchor.constraint(equalToConstant: 50),
+            balanceLabel.heightAnchor.constraint(equalToConstant: 44),
             // balanceLineView
             balanceLineView.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 1),
             balanceLineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             balanceLineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             balanceLineView.heightAnchor.constraint(equalToConstant: 1),
             // myBalance
-            myBalance.topAnchor.constraint(equalTo: balanceLineView.bottomAnchor, constant: 1),
-            myBalance.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            myBalance.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            myBalance.heightAnchor.constraint(equalToConstant: 50),
+            myBalanceButton.topAnchor.constraint(equalTo: balanceLineView.bottomAnchor, constant: 1),
+            myBalanceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            myBalanceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            myBalanceButton.heightAnchor.constraint(equalToConstant: 44),
             // addMoneyToBalance
-            addMoneyToBalance.topAnchor.constraint(equalTo: myBalance.bottomAnchor, constant: 1),
-            addMoneyToBalance.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            addMoneyToBalance.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            addMoneyToBalance.heightAnchor.constraint(equalToConstant: 50),
+            addMoneyToBalanceButton.topAnchor.constraint(equalTo: myBalanceButton.bottomAnchor, constant: 1),
+            addMoneyToBalanceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            addMoneyToBalanceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            addMoneyToBalanceButton.heightAnchor.constraint(equalToConstant: 44),
+            // createOrderButton
+            createOrderButton.topAnchor.constraint(equalTo: addMoneyToBalanceButton.bottomAnchor, constant: 1),
+            createOrderButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            createOrderButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            createOrderButton.heightAnchor.constraint(equalToConstant: 44),
             // basketLabel
-            basketLabel.topAnchor.constraint(equalTo: addMoneyToBalance.bottomAnchor, constant: 1),
+            basketLabel.topAnchor.constraint(equalTo: createOrderButton.bottomAnchor, constant: 1),
             basketLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6),
             basketLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -6),
             basketLabel.heightAnchor.constraint(equalToConstant: 50),
             // basketLineView
-            basketLineView.topAnchor.constraint(equalTo: basketLabel.bottomAnchor, constant: 1),
+            basketLineView.topAnchor.constraint(equalTo: basketLabel.bottomAnchor, constant: 0),
             basketLineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             basketLineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             basketLineView.heightAnchor.constraint(equalToConstant: 1),
+            // totalValueProductLabel
+            totalValueProductLabel.topAnchor.constraint(equalTo: basketLineView.bottomAnchor, constant: 4),
+            totalValueProductLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6),
+            totalValueProductLabel.heightAnchor.constraint(equalToConstant: 40),
+            // totalPriceLabel
+            totalPriceLabel.topAnchor.constraint(equalTo: basketLineView.bottomAnchor, constant: 4),
+            totalPriceLabel.leadingAnchor.constraint(equalTo: totalValueProductLabel.trailingAnchor, constant: 6),
+            totalPriceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            totalPriceLabel.heightAnchor.constraint(equalToConstant: 40),
             // tableView
-            tableView.topAnchor.constraint(equalTo: basketLineView.bottomAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: totalValueProductLabel.bottomAnchor, constant: 4),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             tableView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)
         ])
     }
     // MARK: - Actions
+    @objc private func createOrderTapped() {
+        let alert = Alerts()
+        let createOrder = requestFactory.makeCreateOrderFromUsersBasket()
+        createOrder.createOrder { result in
+            switch result {
+            case .success:
+                alert.showSuccessShoppingAlert(presenter: self)
+            case .failure:
+                alert.showDontHaveManeyInCashAccountAlert(presenter: self)
+            }
+        }
+    }
+    func updateTotalPrice() {
+        let totalPriceRequest = requestFactory.makeGetTotalPrice()
+        totalPriceRequest.getTotalPrice { result in
+            switch result {
+            case .success(let total):
+                self.totalPrice = total
+                self.updateUI()
+            case .failure(let error):
+                print("Failed to load total price: \(error)")
+            }
+        }
+    }
     @objc private  func checkMyBalanceTapped() {
         let alertBalanceViewController = AlertBalanceViewController()
         alertBalanceViewController.modalPresentationStyle = .formSheet
@@ -126,7 +188,7 @@ class ProfileViewController: UIViewController {
         self.present(alertAddMoneyViewController, animated: true, completion: nil)
     }
     private func loadBasketProductData() {
-        let productsRequest = requestFactory.makeGetAllBasketProductRequestFatory()
+        let productsRequest = requestFactory.makeGetAllBasketProduct()
         productsRequest.getAllBasketProducts { result in
             switch result {
             case .success(let products):
@@ -166,6 +228,12 @@ extension ProfileViewController:  UITableViewDelegate, UITableViewDataSource {
 }
 // MARK: - CustomTableCellDelegate
 extension ProfileViewController: CustomTableCellDelegate {
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.totalPriceLabel.text = String(format: "%.2f", self.totalPrice)
+        }
+    }
+
     func didRemoveItem(at indexPath: IndexPath?) {
         if let indexPath = indexPath {
             let row = indexPath.row
@@ -173,6 +241,7 @@ extension ProfileViewController: CustomTableCellDelegate {
                 let productID = basketProducts[row].product.id
                 basketProducts.remove(at: row)
                 deleteProduct(iD: productID!)
+                updateTotalPrice()
             }
         }
     }
@@ -215,6 +284,7 @@ extension ProfileViewController: CustomTableCellDelegate {
                 guard self != nil else { return }
                 switch response {
                 case .success:
+                    self?.updateTotalPrice()
                     self?.tableView.reloadData()
                 case .failure(let error):
                     print("Failed to delete product from user basket: \(error)")
@@ -229,30 +299,10 @@ extension ProfileViewController: CustomTableCellDelegate {
             guard self != nil else { return }
             switch response {
             case .success:
-                break
+                self?.updateTotalPrice()
             case .failure(let error):
                 print("Failed to change quantity product in user basket: \(error)")
             }
         })
     }
 }
-
-// // MARK: - SwiftUI
-// import SwiftUI
-//
-// struct FlowProvider: PreviewProvider {
-//    static var previews: some View {
-//        ContainterView().edgesIgnoringSafeArea(.all)
-//    }
-//    struct ContainterView: UIViewControllerRepresentable {
-//        let tabBar = ProfileViewController( )
-//        func makeUIViewController(context:
-//                                  UIViewControllerRepresentableContext<FlowProvider.ContainterView>) -> ProfileViewController {
-//            return tabBar
-//        }
-//        func updateUIViewController(_ uiViewController:
-//                                    FlowProvider.ContainterView.UIViewControllerType,context:
-//                                    UIViewControllerRepresentableContext<FlowProvider.ContainterView>) {
-//        }
-//    }
-// }
