@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TransparentButtonView: UIButton {
+final class TransparentButtonView: UIButton {
     // MARK: - UI components
     private let button: UIButton = {
            let button = UIButton()

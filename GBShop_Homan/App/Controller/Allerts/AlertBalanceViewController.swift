@@ -21,11 +21,12 @@ class AlertBalanceViewController: UIViewController {
         let moneyText = "\(moneyValue)"
         return BaseLabelView(text: moneyText, size: 16, weight: .bold)
     }()
+
     private let closeButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "multiply.circle.fill")
         button.setImage(image, for: .normal)
-        
+
         button.tintColor = UIColor.black
         return button
     }()
@@ -90,7 +91,6 @@ class AlertBalanceViewController: UIViewController {
         cashAccountRequest.getBalanceFromCashAccount { result in
             switch result {
             case .success(let cashAccount):
-                self.moneyValue = cashAccount.balance
                 self.moneyValue = cashAccount.balance
             case .failure(let error):
                 print("Failed to load cash account balance data: \(error)")

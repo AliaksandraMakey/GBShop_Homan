@@ -8,15 +8,17 @@
 import Alamofire
 import Foundation
 
+/// The `CatalogDataRequest` class is responsible for fetching catalog data, such as products, through an HTTP request.
 class CatalogDataRequest: BaseRequestFactory, CatalogDataRequestFactory {
-    /// Fetch catalog data and provide the result to the completion handler.
+    /// Initiates an HTTP request to fetch catalog data, such as a list of products.
     ///
-    /// - Parameter completionHandler: A closure that receives the result of the catalog data retrieval.
+    /// - Parameters:
+    ///   - completionHandler: A closure to handle the result of the request, which includes a `Result` type.
     func getCatalogData(completionHandler: @escaping (Result<[Product], Error>) -> Void) {
         if let baseUrl {
             let requestModel = CatalogDataRouter(baseUrl: baseUrl)
-            var request = try? requestModel.asURLRequest()
 
+            var request = try? requestModel.asURLRequest()
             AF.request(request!).response { response in
                 switch response.result {
                 case .success:

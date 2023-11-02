@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseImputTextView: UIView {
+final class BaseImputTextView: UIView {
     // MARK: - Properties
     var labelText: String? {
         get {

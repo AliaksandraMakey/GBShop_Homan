@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// TODO: - доработать страницу избранных продуктов
 class FavoriteViewController: UIViewController {
     // MARK: - UI components
     private let catalogLabel = BaseLabelView(text: "Избранное", size: 24, weight: .bold)

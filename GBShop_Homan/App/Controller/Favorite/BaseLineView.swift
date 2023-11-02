@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseLineView: UIView {
+final class BaseLineView: UIView {
     // MARK: - Lifecycle
     init() {
         super.init(frame: .zero)

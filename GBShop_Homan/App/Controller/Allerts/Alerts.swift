@@ -20,11 +20,11 @@ class Alerts {
     static func showAlert(title: String, message: String, actions: [UIAlertAction], presenter: UIViewController) {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            
+
             for action in actions {
                 alertController.addAction(action)
             }
-            
+
             presenter.present(alertController, animated: true, completion: nil)
         }
     }
@@ -35,19 +35,19 @@ class Alerts {
         - presenter: The view controller on which the alert will be presented.
      */
     func showSuccessAlert(presenter: UIViewController) {
-        let continueShoppingAction = UIAlertAction(title: "Continue Shopping", style: .default) { _ in
+        let continueShoppingAction = UIAlertAction(title: "Продолжить шопинг", style: .default) { _ in
             presenter.dismiss(animated: true, completion: nil)
         }
-        
-        let goToBasketAction = UIAlertAction(title: "Go to Cart", style: .default) { _ in
+
+        let goToBasketAction = UIAlertAction(title: "Перейти к корзине", style: .default) { _ in
             NotificationCenter.default.post(name: Notification.Name("SwitchToThirdTab"), object: nil)
         }
-        
+
         let actions = [continueShoppingAction, goToBasketAction]
-        
+
         Alerts.showAlert(
-            title: "Item added\nQuantity: 1\nYou can adjust the quantity in the cart.",
-            message: "Do you want to change the quantity?",
+            title: "Товар добавлен\nв количестве:1\nУвеличить количество товара\nвы можеье в корзине",
+            message: "Хотите изменить количество?",
             actions: actions,
             presenter: presenter
         )
@@ -59,17 +59,17 @@ class Alerts {
         - presenter: The view controller on which the alert will be presented.
      */
     func showEmailAlreadyExistsAlert(presenter: UIViewController) {
-        let okAction = UIAlertAction(title: "Understood", style: .default) { _ in
-            let loginViewController = LoginViewController()
-            loginViewController.modalPresentationStyle = .fullScreen
-            presenter.present(loginViewController, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "Понятно", style: .default) { _ in
+            let login = LoginViewController()
+            login.modalPresentationStyle = .fullScreen
+            presenter.present(login, animated: true, completion: nil)
         }
-        
+
         let actions = [okAction]
-        
+
         Alerts.showAlert(
-            title: "Warning",
-            message: "A user with this email is already registered.",
+            title: "Предупреждение!",
+            message: "На ваш email уже зарегистрирован аккаунт",
             actions: actions,
             presenter: presenter
         )
@@ -81,17 +81,17 @@ class Alerts {
         - presenter: The view controller on which the alert will be presented.
      */
     func showSuccessRegistrationAlert(presenter: UIViewController) {
-        let okAction = UIAlertAction(title: "Understood", style: .default) { _ in
-            let loginViewController = LoginViewController()
-            loginViewController.modalPresentationStyle = .fullScreen
-            presenter.present(loginViewController, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "Понятно", style: .default) { _ in
+            let login = LoginViewController()
+            login.modalPresentationStyle = .fullScreen
+            presenter.present(login, animated: true, completion: nil)
         }
-        
+
         let actions = [okAction]
-        
+
         Alerts.showAlert(
-            title: "Successful Registration",
-            message: "A confirmation email should arrive at your email address.",
+            title: "Регистрация прошла успешно!",
+            message: "На вашу почту пройдет сообщение. Перейдите по ссылке в сообщении чтобы завершить регистрацию",
             actions: actions,
             presenter: presenter
         )
@@ -103,16 +103,16 @@ class Alerts {
         - presenter: The view controller on which the alert will be presented.
      */
     func showSuccessLogoutAlert(presenter: UIViewController) {
-        let okAction = UIAlertAction(title: "Log In Again", style: .default) { _ in
-            let loginViewController = LoginViewController()
-            loginViewController.modalPresentationStyle = .fullScreen
-            presenter.present(loginViewController, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "Войти снова", style: .default) { _ in
+            let login = LoginViewController()
+            login.modalPresentationStyle = .fullScreen
+            presenter.present(login, animated: true, completion: nil)
         }
-        
+
         let actions = [okAction]
-        
+
         Alerts.showAlert(
-            title: "Logout Successful",
+            title: "Вы вышли из аккаунта",
             message: "",
             actions: actions,
             presenter: presenter
@@ -125,17 +125,54 @@ class Alerts {
         - presenter: The view controller on which the alert will be presented.
      */
     func showSuccessUpdateProfileAlert(presenter: UIViewController) {
-        let okAction = UIAlertAction(title: "Understood", style: .default) { _ in
-            let tabBarViewController = TabBarViewController()
-            tabBarViewController.modalPresentationStyle = .fullScreen
-            presenter.present(tabBarViewController, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "Понятно", style: .default) { _ in
+            let tabBar = TabBarViewController()
+            tabBar.modalPresentationStyle = .fullScreen
+            presenter.present(tabBar, animated: true, completion: nil)
         }
-        
+
         let actions = [okAction]
-        
+
         Alerts.showAlert(
-            title: "Data Successfully Updated",
+            title: "Данные успешно обновлены",
             message: "",
+            actions: actions,
+            presenter: presenter
+        )
+    }
+
+    func showDontHaveManeyInCashAccountAlert(presenter: UIViewController) {
+        let continueShoppingAction = UIAlertAction(title: "Вернуться к корзине", style: .default) { _ in
+            presenter.dismiss(animated: true, completion: nil)
+        }
+
+        let goToBasketAction = UIAlertAction(title: "Пополнить счет?", style: .default) { _ in
+            let addMoneyToBalanceAlert = AlertAddMoneyInBalanceViewController()
+            addMoneyToBalanceAlert.modalPresentationStyle = .formSheet
+            presenter.present(addMoneyToBalanceAlert, animated: true, completion: nil)
+        }
+
+        let actions = [continueShoppingAction, goToBasketAction]
+
+        Alerts.showAlert(
+            title: "На вашем счету недостаточно средств",
+            message: "",
+            actions: actions,
+            presenter: presenter
+        )
+    }
+    func showSuccessShoppingAlert(presenter: UIViewController) {
+        let okAction = UIAlertAction(title: "Продолжить покупки", style: .default) { _ in
+            let catalog = TabBarViewController()
+            catalog.modalPresentationStyle = .fullScreen
+            presenter.present(catalog, animated: true, completion: nil)
+        }
+
+        let actions = [okAction]
+
+        Alerts.showAlert(
+            title: "Оплата произведена успешно.",
+            message: "В течении 10 минут с вами свяжется служба доставки для обсуждения деталей.",
             actions: actions,
             presenter: presenter
         )

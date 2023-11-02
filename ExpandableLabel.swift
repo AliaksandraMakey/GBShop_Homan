@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpandableLabel: UILabel {
+final class ExpandableLabel: UILabel {
     // MARK: - Properties
     private var isExpanded = false
     // MARK: - Lifecycle

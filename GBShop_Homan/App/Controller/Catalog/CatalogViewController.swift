@@ -47,8 +47,10 @@ class CatalogViewController: UIViewController {
     private func setupViews() {
         view.addSubview(catalogLabel)
         view.addSubview(lineFirstView)
+        lineFirstView.addShadow()
         view.addSubview(collectionView)
         view.addSubview(lineSecondView)
+        lineSecondView.addShadow()
         cartLabel.addShadow()
         view.addSubview(cartLabel)
         checkBasketButton.addShadow()

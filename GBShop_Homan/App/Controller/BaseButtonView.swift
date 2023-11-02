@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseButtonView: UIView {
+final class BaseButtonView: UIView {
     // MARK: - UI components
     private let button: UIButton = {
         let button = UIButton()

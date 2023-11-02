@@ -9,46 +9,39 @@ import XCTest
 import Alamofire
 @testable import GBShop_Homan
 
+    class AuthTest: XCTestCase {
 
-final class AuthTest: XCTestCase {
-    
-    let expectation = XCTestExpectation(description: "Test for function login")
-    var model: UserUpdateModel!
-    
-    override func setUp() {
-        model = UserUpdateModel(requestFactory: RequestFactory(), userName: "Somebody", password: "mypassword")
-    }
-    
-    override func tearDownWithError() throws {
-        model.requestFactory = nil
-        model.userName = nil
-        model.password = nil
-    }
-    
-    func testAuth() {
-        let auth = model.requestFactory.makeAuthRequest()
-        auth.login(userName: model.userName, password: model.password) { response in
-            switch response.result {
-            case .success(let login):
-                self.checkAuthResult(login)
-                break
-            case .failure(let error):
-                XCTFail("LoginTests: \(error.localizedDescription)")
+        let expectation = XCTestExpectation(description: "Test for function login")
+        var requestFactory: RequestFactory!
+        
+        let expectedUserID: UUID = UUID() 
+
+        override func setUp() {
+            requestFactory = RequestFactory()
+        }
+
+        override func tearDown() {
+            requestFactory = nil
+        }
+
+        func testAuth() {
+            let authRequest = requestFactory.makeAuthRequest()
+            let userName = "Somebody"
+            let password = "mypassword"
+
+            authRequest.login(login: userName, password: password) { response in
+                switch response.result {
+                case .success(let authResult):
+                    self.checkAuthResult(authResult)
+                case .failure(let error):
+                    XCTFail("AuthTest: \(error.localizedDescription)")
+                }
+                self.expectation.fulfill()
             }
-            self.expectation.fulfill()
+            wait(for: [expectation], timeout: 10.0)
         }
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    private func checkAuthResult(_ login: AuthResult) {
-        if login.result != 1 {
-            XCTFail("LoginTests: wrong response from server")
-        }
-        if login.user.id < 1 {
-            XCTFail("LoginTests: id ")
-        }
-        if login.user.login.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            XCTFail("LoginTests: Login doesn't found")
+
+        private func checkAuthResult(_ authResult: AuthResult) {
+            XCTAssertEqual(authResult.user.id, expectedUserID, "AuthTest: unexpected user ID")
         }
     }
-}

@@ -9,7 +9,7 @@ import Foundation
 
 /// A custom error parser conforming to the `AbstractErrorParser` protocol.
 class ErrorParser: AbstractErrorParser {
-    
+
     /// Parses the given result error and returns the same error without modification.
     ///
     /// - Parameter result: The error to be parsed.
@@ -17,7 +17,7 @@ class ErrorParser: AbstractErrorParser {
     func parse(_ result: Error) -> Error {
         return result
     }
-    
+
     /// Parses the response, data, and error to extract and return the underlying error.
     ///
     /// - Parameters:

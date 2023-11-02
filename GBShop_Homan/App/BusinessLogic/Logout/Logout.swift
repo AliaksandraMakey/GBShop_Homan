@@ -28,6 +28,7 @@ class Logout: BaseRequestFactory , LogoutRequestFactory {
 extension Logout {
     /// A structure representing the request route for logging out the user.
     struct LogoutRouter: RequestRouter {
+        /// Properties required to make the HTTP request
         var parameters: Alamofire.Parameters?
         let baseUrl: URL
         let method: HTTPMethod = .post

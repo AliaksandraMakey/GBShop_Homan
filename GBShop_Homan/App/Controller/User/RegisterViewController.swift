@@ -69,15 +69,25 @@ class RegisterViewController: UIViewController {
     // MARK: - Setup subviews
     private func setupViews() {
         view.addSubview(fullNameLabel)
+        fullNameLabel.addShadow()
         view.addSubview(fullNameTextField)
+        fullNameTextField.addShadow()
         view.addSubview(genderLabel)
+        genderLabel.addShadow()
         view.addSubview(genderTextField)
+        genderTextField.addShadow()
         view.addSubview(emailLabel)
+        emailLabel.addShadow()
         view.addSubview(emailTextField)
+        emailTextField.addShadow()
         view.addSubview(passwordLabel)
+        passwordLabel.addShadow()
         view.addSubview(passwordTextField)
+        passwordTextField.addShadow()
         view.addSubview(confirmPasswordLabel)
+        confirmPasswordLabel.addShadow()
         view.addSubview(confirmPasswordTextField)
+        confirmPasswordTextField.addShadow()
         view.addSubview(registerButton)
         view.addSubview(backButton)
         registerButton.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +99,7 @@ class RegisterViewController: UIViewController {
         let trailingMargin: CGFloat = 16.0
         NSLayoutConstraint.activate([
             // fullNameLabel
-            fullNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            fullNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             fullNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingMargin),
             fullNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -trailingMargin),
             // fullNameTextField
@@ -129,7 +139,7 @@ class RegisterViewController: UIViewController {
             confirmPasswordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingMargin),
             confirmPasswordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -trailingMargin),
             // registerButton
-            registerButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 16),
+            registerButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 60),
             registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             // backButton
             backButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 16),

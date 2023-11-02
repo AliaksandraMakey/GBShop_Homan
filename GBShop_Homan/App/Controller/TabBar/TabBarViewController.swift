@@ -44,10 +44,10 @@ class TabBarViewController: UITabBarController {
     private func setTabBarAppearance () {
         let positionOnX: CGFloat = 10
         let positionOnY: CGFloat = 8
-        
+
         let width = tabBar.bounds.width - positionOnX * 2
         let height = tabBar.bounds.height + positionOnY * 2
-        
+
         let roundLayer = CAShapeLayer()
         let bezierPath = UIBezierPath(
             roundedRect: CGRect(x: positionOnX,
@@ -56,11 +56,11 @@ class TabBarViewController: UITabBarController {
                                 height: height),
             cornerRadius: height / 2 )
         roundLayer.path = bezierPath.cgPath
-        
+
         tabBar.layer.insertSublayer(roundLayer, at: 0)
         tabBar.itemWidth = width / 6
         tabBar.itemPositioning = .centered
-        
+
         roundLayer.fillColor = UIColor.mainWhite.cgColor
         tabBar.tintColor = .tabBarItemAccent
         tabBar.unselectedItemTintColor = .backgroundButtonColor
@@ -70,23 +70,3 @@ class TabBarViewController: UITabBarController {
         self.selectedIndex = 2
     }
 }
-
-// MARK: - SwiftUI
-// import SwiftUI
-//
-// struct FlowProvider: PreviewProvider {
-//    static var previews: some View {
-//        ContainterView().edgesIgnoringSafeArea(.all)
-//    }
-//    struct ContainterView: UIViewControllerRepresentable {
-//        let tabBar = TabBarViewController( )
-//        func makeUIViewController(context:
-//                                  UIViewControllerRepresentableContext<FlowProvider.ContainterView>) -> TabBarViewController {
-//            return tabBar
-//        }
-//        func updateUIViewController(_ uiViewController:
-//                                    FlowProvider.ContainterView.UIViewControllerType,context:
-//                                    UIViewControllerRepresentableContext<FlowProvider.ContainterView>) {
-//        }
-//    }
-// }

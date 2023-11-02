@@ -8,18 +8,19 @@
 import Alamofire
 import Foundation
 
-// MARK: - Request
+/// The `ChangesProfileRequest` class is responsible for sending an HTTP request to update a user's profile.
 class ChangesProfileRequest: BaseRequestFactory, ChangesProfileRequestFactory {
-    /// changes profile function
+    /// Initiates an HTTP request to update a user's profile with the specified parameters.
+    ///
     /// - Parameters:
-    ///   - fullName: String
-    ///   - gender: String
-    ///   - isAdmin: Bool
-    ///   - completionHandler: AFDataResponse<Data> return HTTPStatus
+    ///   - fullName: The full name to be updated in the user's profile.
+    ///   - gender: The new gender for the user's profile.
+    ///   - isAdmin: A boolean flag indicating whether the user has admin privileges.
+    ///   - completionHandler: A closure to handle the result of the request, which includes a `Result` type.
     func changesProfile(fullName: String,
                         gender: String,
                         isAdmin: Bool,
-                        completionHandler: @escaping (AFDataResponse<Data>) -> Void) {
+                        completionHandler: @escaping (Result<Void, Error>) -> Void) {
         if let baseUrl {
             let requestModel = ChangesProfileRouter(
                 baseUrl: baseUrl,
@@ -27,8 +28,12 @@ class ChangesProfileRequest: BaseRequestFactory, ChangesProfileRequestFactory {
                 isAdmin: isAdmin,
                 gender: gender
             )
-            self.request(request: requestModel,
-                         completionHandler: completionHandler)
+            let requestWithToken = addTokenToRequest(requestModel: requestModel)
+            AF.request(requestWithToken).response { response in
+                self.processResponse(response: response) { result in
+                    completionHandler(result)
+                }
+            }
         }
     }
 }
@@ -43,10 +48,11 @@ extension ChangesProfileRequest {
         let isAdmin: Bool
         let gender: String
         //        let bio: String
+        /// The parameters to be included in the request.
         var parameters: Parameters? {
             return [
                 "fullName": fullName,
-                 "isAdmin": isAdmin,
+                "isAdmin": isAdmin,
                 "gender": gender
                 //                "bio": bio
             ]
