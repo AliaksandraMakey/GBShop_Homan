@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: - User
 struct User: Codable {
+    // MARK: - Properties
     let id: UUID?
     let fullName: String
     let email: String

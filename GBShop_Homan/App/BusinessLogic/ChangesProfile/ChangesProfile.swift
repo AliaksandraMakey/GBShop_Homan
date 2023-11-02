@@ -1,0 +1,55 @@
+//
+//  ChangesProfile.swift
+//  GBShop_Homan
+//
+//  Created by aaa on 18/05/2023.
+//
+
+import Alamofire
+import Foundation
+
+// MARK: - Request
+class ChangesProfileRequest: BaseRequestFactory, ChangesProfileRequestFactory {
+    /// changes profile function
+    /// - Parameters:
+    ///   - fullName: String
+    ///   - gender: String
+    ///   - isAdmin: Bool
+    ///   - completionHandler: AFDataResponse<Data> return HTTPStatus
+    func changesProfile(fullName: String,
+                        gender: String,
+                        isAdmin: Bool,
+                        completionHandler: @escaping (AFDataResponse<Data>) -> Void) {
+        if let baseUrl {
+            let requestModel = ChangesProfileRouter(
+                baseUrl: baseUrl,
+                fullName: fullName,
+                isAdmin: isAdmin,
+                gender: gender
+            )
+            self.request(request: requestModel,
+                         completionHandler: completionHandler)
+        }
+    }
+}
+extension ChangesProfileRequest {
+    // MARK: - Changes Profile Request Router
+    struct ChangesProfileRouter: RequestRouter {
+        /// Properties required to make the HTTP request
+        let baseUrl: URL
+        let method: HTTPMethod = .put
+        let path: String = "/api/user/update"
+        let fullName: String
+        let isAdmin: Bool
+        let gender: String
+        //        let bio: String
+        var parameters: Parameters? {
+            return [
+                "fullName": fullName,
+                 "isAdmin": isAdmin,
+                "gender": gender
+                //                "bio": bio
+            ]
+        }
+    }
+}

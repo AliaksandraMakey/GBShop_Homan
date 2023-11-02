@@ -9,14 +9,14 @@ import Foundation
 
 // MARK: - Product Model
 struct Product: Codable {
-    // properties
-    let id: Int
+    // MARK: - Properties
+    let id: UUID?
+    let idNumber: String
     let name: String
-    let price: Int
-    /// ProductKeys Keys
-    enum CodingKeys: String, CodingKey {
-        case id = "id_product"
-        case name = "product_name"
-        case price = "price"
-    }
+    let status: String
+    let rating: Int
+    let price: Double
+    let image: String
+    let shortDescription: String
+    let description: String
 }

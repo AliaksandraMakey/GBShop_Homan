@@ -8,13 +8,25 @@
 import Alamofire
 import Foundation
 
-// MARK: - Decodable Serializer
+/// A custom data response serializer for decoding network responses into Codable models with error handling.
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
-    // properties
+    /// The error parser used to handle errors in network responses.
     private let errorParser: AbstractErrorParser
+    /// Initializes the custom data response serializer with an error parser.
+    ///
+    /// - Parameter errorParser: The error parser to handle errors in responses.
     init(errorParser: AbstractErrorParser) {
         self.errorParser = errorParser
     }
+    /// Serializes the network response, handling errors and decoding it into a Codable model.
+    ///
+    /// - Parameters:
+    ///   - request: The original URLRequest of the request.
+    ///   - response: The HTTPURLResponse received from the server.
+    ///   - data: The data received in the response.
+    ///   - error: Any error that occurred during the request.
+    /// - Returns: The decoded Codable model or an error if any occurred.
+    /// - Throws: An error if the response or decoding fails.
     func serialize(request: URLRequest?,
                    response: HTTPURLResponse?,
                    data: Data?,

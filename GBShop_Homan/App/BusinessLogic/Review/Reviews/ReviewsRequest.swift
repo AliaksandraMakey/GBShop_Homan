@@ -28,8 +28,8 @@ class ReviewsRequest: AbstractRequestFactory {
 extension ReviewsRequest: ReviewsRequestFactory {
     /// get reviews by product ID
     func getReviews(idProduct: Int, completionHandler: @escaping (Alamofire.AFDataResponse<ReviewsResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = ReviewsRouter(baseUrl: baseUrl!, idProduct: idProduct)
+        if let baseUrl {
+            let requestModel = ReviewsRouter(baseUrl: baseUrl, idProduct: idProduct)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }

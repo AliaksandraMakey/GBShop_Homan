@@ -8,24 +8,40 @@
 import Alamofire
 import Foundation
 
-// MARK: - Auth
+/// Factory for creating network requests to register a new user.
 class Register: BaseRequestFactory, RegisterResultFactory {
+    /// Register a new user.
+    ///
+    /// - Parameters:
+    ///   - fullName: Full name of the user.
+    ///   - email: User's email.
+    ///   - gender: User's gender.
+    ///   - password: User's password (minimum 8 characters).
+    ///   - confirmPassword: Confirmation of the user's password (minimum 8 characters).
+    ///   - completionHandler: A closure that takes the result of the request as `AFDataResponse<RegisterNewUserResult>`.
     func register(fullName: String,
                   email: String,
                   gender: String,
                   password: String,
                   confirmPassword: String,
-                  completionHandler: @escaping (Alamofire.AFDataResponse<RegisterNewUserResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = RegisterRouter(baseUrl: baseUrl!, fullName: fullName, email: email, gender: gender, password: password, confirmPassword: confirmPassword)
+                  completionHandler: @escaping (AFDataResponse<RegisterNewUserResult>) -> Void) {
+        if let baseUrl {
+            let requestModel = RegisterRouter(baseUrl: baseUrl,
+                                              fullName: fullName,
+                                              email: email,
+                                              gender: gender,
+                                              password: password,
+                                              confirmPassword: confirmPassword)
+
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
 }
 
 extension Register {
-    // MARK: - Register Router
+    /// Structure representing the route for user registration.
     struct RegisterRouter: RequestRouter {
+        /// The base URL for the request.
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "/api/auth/register"
@@ -34,13 +50,16 @@ extension Register {
         let gender: String
         let password: String
         let confirmPassword: String
+        
+        /// The parameters to be included in the request.
         var parameters: Parameters? {
             return [
-                 "fullName": fullName,
-                 "email": email,
-                 "gender": gender,
-                 "password": password,
-                 "confirmPassword": confirmPassword
-            ]}
+                "fullName": fullName,
+                "email": email,
+                "gender": gender,
+                "password": password,
+                "confirmPassword": confirmPassword
+            ]
+        }
     }
 }

@@ -8,7 +8,10 @@
 import Alamofire
 import Foundation
 
-// MARK: - LogoutRequestFactory
+/// A protocol for creating requests to log out the user.
 protocol LogoutRequestFactory {
-    func logout(completionHandler: @escaping (AFDataResponse<Data>) -> Void)
+    /// Logs out the user.
+    ///
+    /// - Parameter completionHandler: A closure that handles the result of the logout operation as `Result<Void, Error>`.
+    func logout(completionHandler: @escaping (Result<Void, Error>) -> Void)
 }

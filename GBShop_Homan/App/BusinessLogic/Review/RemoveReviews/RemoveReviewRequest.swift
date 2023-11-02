@@ -27,8 +27,8 @@ class RemoveReviewRequest: AbstractRequestFactory {
 extension RemoveReviewRequest: RemoveReviewRequestFactory {
     /// remove review by ID
     func removeReview(id: Int, completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void) {
-        if baseUrl != nil {
-            let requestModel = RemoveReviewRouter(baseUrl: baseUrl!, idReview: id)
+        if let baseUrl {
+            let requestModel = RemoveReviewRouter(baseUrl: baseUrl, idReview: id)
             self.request(request: requestModel, completionHandler: completionHandler)
         }
     }
